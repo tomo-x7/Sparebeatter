@@ -13,9 +13,10 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
 function setAction(url) {
   // console.log(url);
   const pattern = /^https:\/\/beta.sparebeat.com\/play\//;
+  const pattern2 = /^https:\/\/beta.sparebeat.com\//
   if (pattern.test(url)) {
     chrome.action.setPopup({ popup: "src/action/popup.html"})
-  } else {
+  } else if(!pattern2.test(url)){
     chrome.action.setPopup({ popup: "src/action/errorpopup.html" });
   }
 }
