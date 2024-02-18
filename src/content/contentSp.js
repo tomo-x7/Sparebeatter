@@ -9,7 +9,7 @@
 
 
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
-((window, document, undefined)=> {
+((window, document, undefined) => {
 
 	"use strict";
 
@@ -20,7 +20,7 @@
 
 	_html2canvas.Util = {};
 
-	_html2canvas.Util.log =  (a) =>{
+	_html2canvas.Util.log = (a) => {
 		if (_html2canvas.logging && window.console && window.console.log) {
 			window.console.log(a);
 		}
@@ -28,7 +28,7 @@
 
 	_html2canvas.Util.trimText = ((isNative) => (input) => isNative ? isNative.apply(input) : (`${input || ''}`).replace(/^\s+|\s+$/g, ''))(String.prototype.trim);
 
-	_html2canvas.Util.asFloat =  (v)=> {
+	_html2canvas.Util.asFloat = (v) => {
 		return parseFloat(v);
 	};
 
@@ -2670,31 +2670,31 @@
 		let queue;
 		let canvas;
 		let options = {
-				// general
-				logging: false,
-				elements: elements,
-				background: "#fff",
+			// general
+			logging: false,
+			elements: elements,
+			background: "#fff",
 
-				// preload options
-				proxy: null,
-				timeout: 0,    // no timeout
-				useCORS: false, // try to load images as CORS (where available), before falling back to proxy
-				allowTaint: false, // whether to allow images to taint the canvas, won't need proxy if set to true
+			// preload options
+			proxy: null,
+			timeout: 0,    // no timeout
+			useCORS: false, // try to load images as CORS (where available), before falling back to proxy
+			allowTaint: false, // whether to allow images to taint the canvas, won't need proxy if set to true
 
-				// parse options
-				svgRendering: false, // use svg powered rendering where available (FF11+)
-				ignoreElements: "IFRAME|OBJECT|PARAM",
-				useOverflow: true,
-				letterRendering: false,
-				chinese: false,
+			// parse options
+			svgRendering: false, // use svg powered rendering where available (FF11+)
+			ignoreElements: "IFRAME|OBJECT|PARAM",
+			useOverflow: true,
+			letterRendering: false,
+			chinese: false,
 
-				// render options
+			// render options
 
-				width: null,
-				height: null,
-				taintTest: true, // do a taint test with all images before applying to canvas
-				renderer: "Canvas"
-			};
+			width: null,
+			height: null,
+			taintTest: true, // do a taint test with all images before applying to canvas
+			renderer: "Canvas"
+		};
 
 		options = _html2canvas.Util.Extend(opts, options);
 
@@ -2875,20 +2875,28 @@
 
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	console.log(request);
 	if (request.message === 'screenshot') {
-		const elem = document.getElementById("rerere") || document.getElementsByClassName("Game")[0];
-		console.log(elem)
-		let imgData;
-		html2canvas(elem, {
-			onrendered: (canvas) => {
-				//imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
-				imgData = canvas.toDataURL();
-				//console.log(imgData)
-				sendResponse(imgData);
-
-			},
-		});
+		const elem = document.getElementById("rerere");
+		if (elem) {
+			let imgData;
+			const tracktitle = document.getElementsByClassName('Track_title')[0].innerHTML;
+			const trackartist = document.getElementsByClassName('Track_artist')[0].innerHTML;
+			const difficulty = document.getElementsByClassName('Track_difficulty ')[0].innerHTML.replaceAll(' ', '');
+			const score = document.getElementsByClassName('Score_value')[0].innerHTML;
+			const rank = document.getElementsByClassName('Rank_value')[0].innerHTML;
+			const message = `Sparebeatの「${tracktitle}/${trackartist}」(${difficulty}) で${score}点(ランク${rank})を獲得しました！`
+			const encodedmessage = encodeURIComponent(message);
+			html2canvas(elem, {
+				onrendered: (canvas) => {
+					//imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
+					imgData = canvas.toDataURL();
+					//console.log(imgData)
+					sendResponse({ data: imgData, message: encodedmessage, url: window.location.href });
+				},
+			});
+		} else {
+			sendResponse({ message: 'noresult' })
+		}
 		return true;
 	}
 });

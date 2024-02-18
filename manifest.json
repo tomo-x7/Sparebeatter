@@ -2,7 +2,7 @@
 	"name": "Sparebeatter",
 	"version": "0.0.0",
 	"manifest_version": 3,
-	"description": "tweet sparebeet result",
+	"description": "sparebeat(beta)のリザルトをツイートします。",
 	"permissions": [
 		"tabs",
 		"declarativeContent",
