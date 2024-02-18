@@ -10,14 +10,14 @@
         "https://beta.sparebeat.com/play/*"
       ],
       "js": [
-        "contentSp.js"
+        "src/content/contentSp.js"
       ]
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background/background.js"
   },
   "action":{
-    "default_popup":"popup.html"
+    "default_popup":"src/action/popup.html"
   }
 }

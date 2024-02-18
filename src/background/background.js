@@ -14,8 +14,8 @@ function setAction(url) {
   // console.log(url);
   const pattern = /^https:\/\/beta.sparebeat.com\/play\//;
   if (pattern.test(url)) {
-    chrome.action.setPopup({ popup: "./popup.html"})
+    chrome.action.setPopup({ popup: "src/action/popup.html"})
   } else {
-    chrome.action.setPopup({ popup: "./errorpopup.html" });
+    chrome.action.setPopup({ popup: "src/action/errorpopup.html" });
   }
 }
