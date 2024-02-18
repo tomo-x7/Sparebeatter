@@ -1,0 +1,23 @@
+{
+  "name": "Sparebeatter",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "tweet sparebeet result",
+  "permissions":["tabs","declarativeContent","clipboardWrite","clipboardRead"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://beta.sparebeat.com/play/*"
+      ],
+      "js": [
+        "contentSp.js"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action":{
+    "default_popup":"popup.html"
+  }
+}
