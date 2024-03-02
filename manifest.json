@@ -1,8 +1,8 @@
 {
 	"name": "Sparebeatter",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"manifest_version": 3,
-	"description": "sparebeat(beta)のリザルトをツイートします。",
+	"description": "・sparebeat(beta)のリザルトをツイートします。\n・MapEditorのキーコンフィグを設定できます。",
 	"permissions": [
 		"tabs",
 		"declarativeContent",
@@ -19,6 +19,11 @@
 		{
 			"matches": ["https://beta.sparebeat.com/play/*"],
 			"js": ["src/content/contentSp.js"]
+		},
+		{
+			"matches":["https://sparebeat.com/embed/"],
+			"js":["src/content/editorembed.js"],
+			"all_frames": true
 		}
 	],
 	"background": {
