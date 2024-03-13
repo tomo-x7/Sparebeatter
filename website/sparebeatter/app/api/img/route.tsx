@@ -1,12 +1,12 @@
 import { ImageResponse } from "next/og";  
 import type { NextRequest } from "next/server";
 import style from "./style.module.css"
-export const alt = "OGP画像";
-export const size = {
+const alt = "OGP画像";
+const size = {
   width: 960,
   height: 640,
 };
-export const contentType = "image/png";
+const contentType = "image/png";
 
 export async function GET(rawrequest:NextRequest) {
   //const searchParams=new URL(rawrequest.url).searchParams
