@@ -54,15 +54,30 @@
     font-size: 20px
 }
 
-.Track_difficulty-easy {
+.easy {
+    display: inline-block;
+    margin: 16px 16px 0 0;
+    padding: 0 8px;
+    color: #fff;
+    font-size: 20px;
     background-color: #1abc9c
 }
 
-.Track_difficulty-normal {
+.normal {
+    display: inline-block;
+    margin: 16px 16px 0 0;
+    padding: 0 8px;
+    color: #fff;
+    font-size: 20px;
     background-color: #f1c40f
 }
 
-.Track_difficulty-hard {
+.hard {
+    display: inline-block;
+    margin: 16px 16px 0 0;
+    padding: 0 8px;
+    color: #fff;
+    font-size: 20px;
     background-color: #c0392b
 }
 
