@@ -12,9 +12,6 @@ const contentType = "image/png";
 
 export async function GET(rawrequest: NextRequest) {
 	const searchParams = new URL(rawrequest.url).searchParams;
-	if (searchParams.has("html")) {
-		return elem;
-	}
 	const bind = searchParams.has("bind");
 	const rondom = searchParams.has("random");
 	const mirror = searchParams.has("mirror");
