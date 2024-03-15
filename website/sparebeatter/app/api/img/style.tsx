@@ -308,7 +308,7 @@ export const elem = (Option: ReactElement,{title='music name',artist='artist nam
 		fontSize: "24px",
 		lineHeight: "24px",
 		transform: "translateY(50%)",
-	},
+	}
 	return (
 		<>
 			<div id="rerere" style={style.ResultScreen}>
