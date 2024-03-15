@@ -319,11 +319,11 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 						<div style={style.Track_artist}>{artist}</div>
 						<div style={{ display: "flex" }}>{Option}</div>
 					</div>
-					<div style={style.Score}>
+					{/* <div style={style.Score}>
 						<div style={style.Score_label}>Score</div>
 						<div style={style.Score_value}>{score}</div>
 						<div style={style.Score_diff}>[ {diff} ]</div>
-					</div>
+					</div> */}
 					<div style={style.Rank}>
 						<div style={style.Rank_label}>Rank</div>
 						<div style={style.Rank_value}>{rank}</div>
