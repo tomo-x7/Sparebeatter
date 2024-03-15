@@ -332,19 +332,19 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>JUST:</div>
-								<div style={style.Detail_table_row_value}>{just}</div>
+								<div style={style.Detail_table_row_value}>99</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>RUSH:</div>
-								<div style={style.Detail_table_row_value}>{rush}</div>
+								<div style={style.Detail_table_row_value}>88</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>COOL:</div>
-								<div style={style.Detail_table_row_value}>{cool}</div>
+								<div style={style.Detail_table_row_value}>77</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>MISS:</div>
-								<div style={style.Detail_table_row_value}>{miss}</div>
+								<div style={style.Detail_table_row_value}>66</div>
 							</div>
 						</div>
 						 <div style={style.Average}>
