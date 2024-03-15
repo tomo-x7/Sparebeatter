@@ -30,7 +30,7 @@ export async function generateMetadata({searchParams}:{searchParams: { [key: str
 			title: 'sparebeatter',
 			description: 'sparebeatのリザルトをツイート、Map Editorのキーコンフィグの変更などの便利機能詰め合わせ拡張機能',
 			site: "@tomo_x_79",
-			image: [`https://sparebeatter-git-dev-tomo-xs-projects.vercel.app/api/img?${querys}`],
+			images: [`https://sparebeatter-git-dev-tomo-xs-projects.vercel.app/api/img?${querys}`],
 		},
 	};
 }
