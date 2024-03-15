@@ -15,9 +15,9 @@ export async function GET(rawrequest: NextRequest) {
 	const sp = (key: string) => {
 		return searchParams.get(key) ?? '0';
 	}
-	const bind = sp.has("bind");
-	const rondom = sp.has("random");
-	const mirror = sp.has("mirror");
+	const bind = searchParams.has("bind");
+	const rondom = searchParams.has("random");
+	const mirror = searchParams.has("mirror");
 	const difficult = sp("difficult") ?? "easy";
 	const option = (
 		<>
