@@ -4,7 +4,7 @@ export default function Home() {
 	return (<div>test page</div>);
 }
 
-export async function generateMetadata({searchParams}) {
+export async function generateMetadata({searchParams}:{searchParams: { [key: string]: string | string[] | undefined };}) {
 	let querys:string=''
 	for(const key in searchParams){
 		querys+=`${key}=${searchParams[key]}&`
