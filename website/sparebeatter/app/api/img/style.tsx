@@ -332,7 +332,7 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>JUST:</div>
-								<div style={style.Detail_table_row_value}>99</div>
+								<div style={style.Detail_table_row_value}>{just}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>RUSH:</div>
