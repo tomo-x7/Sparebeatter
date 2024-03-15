@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import polygon from "../../../public/polygon.png";
 export const style: {
-	[key: string]: { [key: string]: string | number };
+	[key: string]: { display: "flex"; [key: string]: string | number };
 } = {
 	ResultScreen: {
 		display: "flex",
