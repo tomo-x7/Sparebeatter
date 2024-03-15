@@ -225,20 +225,7 @@ export const style: {
 		background: "linear-gradient(#ceceff, white, #ffcece)",
 	},
 
-	Average_value: {
-		display: "flex",
-		bottom: "38.9732%",
-		position: "absolute",
-		left: "20px",
-		paddingLeft: "16px",
-		width: "auto",
-		height: "24px",
-		color: "#fff",
-		fontFamily: "NovaMono, sans-serif",
-		fontSize: "24px",
-		lineHeight: "24px",
-		transform: "translateY(50%)",
-	},
+	
 
 	Average_inner: {
 		display: "flex",
@@ -307,62 +294,75 @@ export const style: {
 		alignItems: "center",
 	},
 };
-
-export const elem = (Option: ReactElement) => {
+export const elem = (Option: ReactElement,{title='music name',artist='artist name',score=1000000,diff=-10000,rank='SSS',just=999,rush=100,cool=200,miss=300,average=3.99,chain=999,attack=60.9}) => {
+	const Average_value= {
+		display: "flex",
+		bottom: `${average+50}%`,
+		position: "absolute",
+		left: "20px",
+		paddingLeft: "16px",
+		width: "auto",
+		height: "24px",
+		color: "#fff",
+		fontFamily: "NovaMono, sans-serif",
+		fontSize: "24px",
+		lineHeight: "24px",
+		transform: "translateY(50%)",
+	},
 	return (
 		<>
 			<div id="rerere" style={style.ResultScreen}>
 				<div style={style.ResultScreen_before} />
 				<div style={style.ResultScreen_container}>
 					<div style={style.Track}>
-						<div style={style.Track_title}>Kirakirize World</div>
-						<div style={style.Track_artist}>kooridori</div>
+						<div style={style.Track_title}>{title}</div>
+						<div style={style.Track_artist}>{artist}</div>
 						<div style={{ display: "flex" }}>{Option}</div>
 					</div>
 					<div style={style.Score}>
 						<div style={style.Score_label}>Score</div>
-						<div style={style.Score_value}>846413</div>
-						<div style={style.Score_diff}>[ -054932 ]</div>
+						<div style={style.Score_value}>{score}</div>
+						<div style={style.Score_diff}>[ {diff} ]</div>
 					</div>
 					<div style={style.Rank}>
 						<div style={style.Rank_label}>Rank</div>
-						<div style={style.Rank_value}>AAA</div>
+						<div style={style.Rank_value}>{rank}</div>
 					</div>
 					<div style={style.Detail}>
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>JUST:</div>
-								<div style={style.Detail_table_row_value}>637</div>
+								<div style={style.Detail_table_row_value}>{just}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>RUSH:</div>
-								<div style={style.Detail_table_row_value}>159</div>
+								<div style={style.Detail_table_row_value}>{rush}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>COOL:</div>
-								<div style={style.Detail_table_row_value}>52</div>
+								<div style={style.Detail_table_row_value}>{cool}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>MISS:</div>
-								<div style={style.Detail_table_row_value}>16</div>
+								<div style={style.Detail_table_row_value}>{miss}</div>
 							</div>
 						</div>
 						<div style={style.Average}>
 							<div style={style.Average_before} />
-							<div style={style.Average_value}>
+							<div style={Average_value}>
 								<div style={style.Average_inner} />
-								<div style={{ display: "flex" }}>-11.027ms</div>
+								<div style={{ display: "flex" }}>{average}ms</div>
 							</div>
 							<div style={style.Average_after} />
 						</div>
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>CHAIN:</div>
-								<div style={style.Detail_table_row_value}>296</div>
+								<div style={style.Detail_table_row_value}>{chain}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>ATTACK:</div>
-								<div style={style.Detail_table_row_value}>46.4%</div>
+								<div style={style.Detail_table_row_value}>{attack}%</div>
 							</div>
 						</div>
 					</div>
