@@ -326,7 +326,7 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 					</div>
 					<div style={style.Rank}>
 						<div style={style.Rank_label}>Rank</div>
-						<div style={style.Rank_value}>AA</div>
+						<div style={style.Rank_value}>{rank}</div>
 					</div>
 					<div style={style.Detail}>
 						<div style={style.Detail_table}>
