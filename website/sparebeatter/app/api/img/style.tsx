@@ -3,16 +3,12 @@ import polygon from "../../../public/polygon.png";
 export const style: {
 	[key: string]: { display: "flex"; [key: string]: string | number };
 } = {
-	ResultScreen: {
+	twitter_wrapper: {
 		display: "flex",
-		backgroundImage: `linear-gradient(#1f96e7cc, #486ae7cc), url('https://beta.sparebeat.com/assets/images/polygon.png')`,
-		position: "relative",
-		width: "960px",
+		justifyContent: "center",
+		width: "1222px",
 		height: "640px",
-		zIndex: "2",
-		overflow: "hidden",
-		backgroundColor: "#414141",
-		fontFamily: "Nova Mono, sans-serif",
+		backgroundColor: "#000",
 	},
 
 	ResultScreen_before: {
@@ -300,19 +296,22 @@ export const elem = (
 	{
 		title = "music name",
 		artist = "artist name",
-		score = 1000000,
-		diff = -10000,
-		rank = "SSS",
-		just = 999,
-		rush = 100,
-		cool = 200,
-		miss = 300,
-		average = 3.99,
-		chain = 999,
-		attack = 60.9,
+		score = 0,
+		diff = 0,
+		rank = "Z",
+		just = 0,
+		rush = 0,
+		cool = 0,
+		miss = 0,
+		average = 0,
+		chain = 0,
+		attack = 0,
+		backcolor1 = "1f96e7cc",
+		backcolor2 = "486ae7cc",
+		istwitter = false,
 	},
 ) => {
-	const Average_value: { display: "flex"; [key: string]: string | number } = {
+	const Average_value: { [key: string]: string | number } = {
 		display: "flex",
 		bottom: `${average + 50}%`,
 		position: "absolute",
@@ -326,79 +325,92 @@ export const elem = (
 		lineHeight: "24px",
 		transform: "translateY(50%)",
 	};
+	const ResultScreen: { [key: string]: string | number } = {
+		display: "flex",
+		backgroundImage: `linear-gradient(#${backcolor1}, #${backcolor2}), url('https://beta.sparebeat.com/assets/images/polygon.png')`,
+		position: "relative",
+		width: "960px",
+		height: "640px",
+		zIndex: "2",
+		overflow: "hidden",
+		backgroundColor: "#414141",
+		fontFamily: "Nova Mono, sans-serif",
+	};
 	const diffs: string =
 		(diff < 0 ? "-" : "+") + Math.abs(diff).toString().padStart(6, "0");
-	return (
-		<>
-			<div id="rerere" style={style.ResultScreen}>
-				<div style={style.ResultScreen_before} />
-				<div style={style.ResultScreen_container}>
-					<div style={style.Track}>
-						<div style={style.Track_title}>{title}</div>
-						<div style={style.Track_artist}>{artist}</div>
-						<div style={{ display: "flex" }}>{Option}</div>
-					</div>
-					<div style={style.Score}>
-						<div style={style.Score_label}>Score</div>
-						<div style={style.Score_value}>{score}</div>
-						<div style={style.Score_diff}>[ {diffs} ]</div>
-					</div>
-					<div style={style.Rank}>
-						<div style={style.Rank_label}>Rank</div>
-						<div style={style.Rank_value}>{rank}</div>
-					</div>
-					<div style={style.Detail}>
-						<div style={style.Detail_table}>
-							<div style={style.Detail_table_row}>
-								<div style={style.Detail_table_row_label}>JUST:</div>
-								<div style={style.Detail_table_row_value}>{just}</div>
-							</div>
-							<div style={style.Detail_table_row}>
-								<div style={style.Detail_table_row_label}>RUSH:</div>
-								<div style={style.Detail_table_row_value}>{rush}</div>
-							</div>
-							<div style={style.Detail_table_row}>
-								<div style={style.Detail_table_row_label}>COOL:</div>
-								<div style={style.Detail_table_row_value}>{cool}</div>
-							</div>
-							<div style={style.Detail_table_row}>
-								<div style={style.Detail_table_row_label}>MISS:</div>
-								<div style={style.Detail_table_row_value}>{miss}</div>
-							</div>
-						</div>
-						<div style={style.Average}>
-							<div style={style.Average_before} />
-							<div style={Average_value}>
-								{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-								<svg
-									style={style.Average_inner}
-									width="8"
-									height="16"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path d="m8,0l-8,8l8,8" fill="#FF0000" id="svg_2" />
-								</svg>
-								<div style={{ display: "flex" }}>
-									{(average < 0 ? "-" : "+") + average.toFixed(3)}ms
-								</div>
-							</div>
-							<div style={style.Average_after} />
-						</div>
-						<div style={style.Detail_table}>
-							<div style={style.Detail_table_row}>
-								<div style={style.Detail_table_row_label}>CHAIN:</div>
-								<div style={style.Detail_table_row_value}>{chain}</div>
-							</div>
-							<div style={style.Detail_table_row}>
-								<div style={style.Detail_table_row_label}>ATTACK:</div>
-								<div style={style.Detail_table_row_value}>{attack}%</div>
-							</div>
-						</div>
-					</div>
-					<div style={style.Publish}>タイムラインに投稿</div>
-					<div style={style.Escape}>Escape</div>
+	const main = (
+		<div id="rerere" style={ResultScreen}>
+			<div style={style.ResultScreen_before} />
+			<div style={style.ResultScreen_container}>
+				<div style={style.Track}>
+					<div style={style.Track_title}>{title}</div>
+					<div style={style.Track_artist}>{artist}</div>
+					<div style={{ display: "flex" }}>{Option}</div>
 				</div>
+				<div style={style.Score}>
+					<div style={style.Score_label}>Score</div>
+					<div style={style.Score_value}>{score}</div>
+					<div style={style.Score_diff}>[ {diffs} ]</div>
+				</div>
+				<div style={style.Rank}>
+					<div style={style.Rank_label}>Rank</div>
+					<div style={style.Rank_value}>{rank}</div>
+				</div>
+				<div style={style.Detail}>
+					<div style={style.Detail_table}>
+						<div style={style.Detail_table_row}>
+							<div style={style.Detail_table_row_label}>JUST:</div>
+							<div style={style.Detail_table_row_value}>{just}</div>
+						</div>
+						<div style={style.Detail_table_row}>
+							<div style={style.Detail_table_row_label}>RUSH:</div>
+							<div style={style.Detail_table_row_value}>{rush}</div>
+						</div>
+						<div style={style.Detail_table_row}>
+							<div style={style.Detail_table_row_label}>COOL:</div>
+							<div style={style.Detail_table_row_value}>{cool}</div>
+						</div>
+						<div style={style.Detail_table_row}>
+							<div style={style.Detail_table_row_label}>MISS:</div>
+							<div style={style.Detail_table_row_value}>{miss}</div>
+						</div>
+					</div>
+					<div style={style.Average}>
+						<div style={style.Average_before} />
+						<div style={Average_value}>
+							{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+							<svg
+								style={style.Average_inner}
+								width="8"
+								height="16"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path d="m8,0l-8,8l8,8" fill="#FF0000" id="svg_2" />
+							</svg>
+							<div style={{ display: "flex" }}>
+								{(average < 0 ? "-" : "+") + average.toFixed(3)}ms
+							</div>
+						</div>
+						<div style={style.Average_after} />
+					</div>
+					<div style={style.Detail_table}>
+						<div style={style.Detail_table_row}>
+							<div style={style.Detail_table_row_label}>CHAIN:</div>
+							<div style={style.Detail_table_row_value}>{chain}</div>
+						</div>
+						<div style={style.Detail_table_row}>
+							<div style={style.Detail_table_row_label}>ATTACK:</div>
+							<div style={style.Detail_table_row_value}>{attack}%</div>
+						</div>
+					</div>
+				</div>
+				<div style={style.Publish}>タイムラインに投稿</div>
+				<div style={style.Escape}>Escape</div>
 			</div>
-		</>
+		</div>
 	);
+	if (istwitter) {
+		return <div style={style.wrapper}>{main}</div>;
+	}
+	return main;
 };

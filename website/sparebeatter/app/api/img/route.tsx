@@ -46,9 +46,12 @@ export async function GET(rawrequest: NextRequest) {
 		average: Number.parseFloat(sp('average')),
 		chain: Number.parseInt(sp('chain')),
 		attack: Number.parseFloat(sp('attack')),
+		backcolor1:searchParams.has('backcolor1')?sp('backcolor1'):undefined,
+		backcolor2:searchParams.has('backcolor2')?sp('backcolor2'):undefined,
+		istwitter:sp('src')==='twitter',
 	}
 	return new ImageResponse(elem(option, params), {
-		width: 960,
+		width: params.istwitter?1222:960,
 		height: 640,
 	});
 }
