@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import polygon from "../../../public/polygon.png";
 export const style: {
-	[key: string]: { display: "flex"; [key: string]: string | number };
+	[key: string]: { display: "flex";[key: string]: string | number };
 } = {
 	ResultScreen: {
 		display: "flex",
@@ -295,20 +295,20 @@ export const style: {
 	},
 };
 export const elem = (Option: ReactElement, { title = 'music name', artist = 'artist name', score = 1000000, diff = -10000, rank = 'SSS', just = 999, rush = 100, cool = 200, miss = 300, average = 3.99, chain = 999, attack = 60.9 }) => {
-	const Average_value: { display: "flex"; [key: string]: string | number } = {
-		display: "flex",
-		bottom: `${average + 50}%`,
-		position: "absolute",
-		left: "20px",
-		paddingLeft: "16px",
-		width: "auto",
-		height: "24px",
-		color: "#fff",
-		fontFamily: "NovaMono, sans-serif",
-		fontSize: "24px",
-		lineHeight: "24px",
-		transform: "translateY(50%)",
-	}
+	// const Average_value: { display: "flex";[key: string]: string | number } = {
+	// 	display: "flex",
+	// 	bottom: `${average + 50}%`,
+	// 	position: "absolute",
+	// 	left: "20px",
+	// 	paddingLeft: "16px",
+	// 	width: "auto",
+	// 	height: "24px",
+	// 	color: "#fff",
+	// 	fontFamily: "NovaMono, sans-serif",
+	// 	fontSize: "24px",
+	// 	lineHeight: "24px",
+	// 	transform: "translateY(50%)",
+	// }
 	return (
 		<>
 			<div id="rerere" style={style.ResultScreen}>
@@ -349,7 +349,20 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 						</div>
 						<div style={style.Average}>
 							<div style={style.Average_before} />
-							<div style={Average_value}>
+							<div style={{
+								display: "flex",
+								bottom: `${average + 50}%`,
+								position: "absolute",
+								left: "20px",
+								paddingLeft: "16px",
+								width: "auto",
+								height: "24px",
+								color: "#fff",
+								fontFamily: "NovaMono, sans-serif",
+								fontSize: "24px",
+								lineHeight: "24px",
+								transform: "translateY(50%)",
+							}}>
 								<div style={style.Average_inner} />
 								<div style={{ display: "flex" }}>{average}ms</div>
 							</div>
