@@ -205,7 +205,13 @@ export const style: {
 		justifyContent: "space-between",
 	},
 
-	Detail_table_row_label: { display: "flex", paddingRight: "1rem" },
+	Detail_table_row_label: {
+		display: "flex",
+		paddingRight: "1rem",
+	},
+	Detail_table_row_value: {
+		display: "flex",
+	},
 
 	Average: {
 		display: "flex",
@@ -336,18 +342,18 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>RUSH:</div>
-								<div style={style.Detail_table_row_value}>88</div>
+								<div style={style.Detail_table_row_value}>{rush}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>COOL:</div>
-								<div style={style.Detail_table_row_value}>77</div>
+								<div style={style.Detail_table_row_value}>{cool}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>MISS:</div>
-								<div style={style.Detail_table_row_value}>66</div>
+								<div style={style.Detail_table_row_value}>{miss}</div>
 							</div>
 						</div>
-						 <div style={style.Average}>
+						<div style={style.Average}>
 							<div style={style.Average_before} />
 							<div style={Average_value}>
 								<div style={style.Average_inner} />
@@ -358,11 +364,11 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>CHAIN:</div>
-								<div style={style.Detail_table_row_value}>55</div>
+								<div style={style.Detail_table_row_value}>{chain}</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>ATTACK:</div>
-								<div style={style.Detail_table_row_value}>44%</div>
+								<div style={style.Detail_table_row_value}>{attack}%</div>
 							</div>
 						</div>
 					</div>
