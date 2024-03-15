@@ -12,10 +12,13 @@ const contentType = "image/png";
 
 export async function GET(rawrequest: NextRequest) {
 	const searchParams = new URL(rawrequest.url).searchParams;
-	const bind = searchParams.has("bind");
-	const rondom = searchParams.has("random");
-	const mirror = searchParams.has("mirror");
-	const difficult = searchParams.get("difficult") ?? "easy";
+	const sp = (key: string) => {
+		return searchParams.get(key) ?? '0';
+	}
+	const bind = sp.has("bind");
+	const rondom = sp.has("random");
+	const mirror = sp.has("mirror");
+	const difficult = sp("difficult") ?? "easy";
 	const option = (
 		<>
 			{difficult === "hard" ? (
@@ -30,7 +33,21 @@ export async function GET(rawrequest: NextRequest) {
 			{bind ? <div style={style.Track_bind}>BIND</div> : <></>}
 		</>
 	);
-	return new ImageResponse(elem(<></>,{}), {
+	const params = {
+		title: sp('title'),
+		artist: sp('artist'),
+		score: Number.parseInt(sp('score')),
+		diff: Number.parseInt(sp('diff')),
+		rank: sp('rank'),
+		just: Number.parseInt(sp('just')),
+		rush: Number.parseInt(sp('rush')),
+		cool: Number.parseInt(sp('cool')),
+		miss: Number.parseInt(sp('miss')),
+		average: Number.parseFloat(sp('average')),
+		chain: Number.parseInt(sp('chain')),
+		attack: Number.parseFloat(sp('attack')),
+	}
+	return new ImageResponse(elem(<></>, params), {
 		width: 960,
 		height: 640,
 	});
