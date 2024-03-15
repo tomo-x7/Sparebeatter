@@ -295,7 +295,7 @@ export const style: {
 	},
 };
 export const elem = (Option: ReactElement, { title = 'music name', artist = 'artist name', score = 1000000, diff = -10000, rank = 'SSS', just = 999, rush = 100, cool = 200, miss = 300, average = 3.99, chain = 999, attack = 60.9 }) => {
-	const Average_value: { [key: string]: string | number } = {
+	const Average_value: { display: "flex"; [key: string]: string | number } = {
 		display: "flex",
 		bottom: `${average + 50}%`,
 		position: "absolute",
