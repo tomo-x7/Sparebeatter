@@ -295,20 +295,20 @@ export const style: {
 	},
 };
 export const elem = (Option: ReactElement, { title = 'music name', artist = 'artist name', score = 1000000, diff = -10000, rank = 'SSS', just = 999, rush = 100, cool = 200, miss = 300, average = 3.99, chain = 999, attack = 60.9 }) => {
-	// const Average_value: { display: "flex";[key: string]: string | number } = {
-	// 	display: "flex",
-	// 	bottom: `${average + 50}%`,
-	// 	position: "absolute",
-	// 	left: "20px",
-	// 	paddingLeft: "16px",
-	// 	width: "auto",
-	// 	height: "24px",
-	// 	color: "#fff",
-	// 	fontFamily: "NovaMono, sans-serif",
-	// 	fontSize: "24px",
-	// 	lineHeight: "24px",
-	// 	transform: "translateY(50%)",
-	// }
+	const Average_value: { display: "flex";[key: string]: string | number } = {
+		display: "flex",
+		bottom: `${average + 50}%`,
+		position: "absolute",
+		left: "20px",
+		paddingLeft: "16px",
+		width: "auto",
+		height: "24px",
+		color: "#fff",
+		fontFamily: "NovaMono, sans-serif",
+		fontSize: "24px",
+		lineHeight: "24px",
+		transform: "translateY(50%)",
+	}
 	return (
 		<>
 			<div id="rerere" style={style.ResultScreen}>
@@ -317,13 +317,13 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 					<div style={style.Track}>
 						<div style={style.Track_title}>aa</div>
 						<div style={style.Track_artist}>bb</div>
-						{/* <div style={{ display: "flex" }}>{Option}</div> */}
+						<div style={{ display: "flex" }}>{Option}</div>
 					</div>
-					{/* <div style={style.Score}>
+					<div style={style.Score}>
 						<div style={style.Score_label}>Score</div>
 						<div style={style.Score_value}>{score}</div>
 						<div style={style.Score_diff}>[ {diff} ]</div>
-					</div> */}
+					</div>
 					<div style={style.Rank}>
 						<div style={style.Rank_label}>Rank</div>
 						<div style={style.Rank_value}>AA</div>
@@ -347,27 +347,14 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 								<div style={style.Detail_table_row_value}>66</div>
 							</div>
 						</div>
-						{/* <div style={style.Average}>
+						 <div style={style.Average}>
 							<div style={style.Average_before} />
-							<div style={{
-								display: "flex",
-								bottom: `${average + 50}%`,
-								position: "absolute",
-								left: "20px",
-								paddingLeft: "16px",
-								width: "auto",
-								height: "24px",
-								color: "#fff",
-								fontFamily: "NovaMono, sans-serif",
-								fontSize: "24px",
-								lineHeight: "24px",
-								transform: "translateY(50%)",
-							}}>
+							<div style={Average_value}>
 								<div style={style.Average_inner} />
 								<div style={{ display: "flex" }}>{average}ms</div>
 							</div>
 							<div style={style.Average_after} />
-						</div> */}
+						</div>
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>CHAIN:</div>
