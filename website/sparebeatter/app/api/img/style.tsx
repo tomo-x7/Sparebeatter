@@ -315,9 +315,9 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 				<div style={style.ResultScreen_before} />
 				<div style={style.ResultScreen_container}>
 					<div style={style.Track}>
-						<div style={style.Track_title}>{title}</div>
-						<div style={style.Track_artist}>{artist}</div>
-						<div style={{ display: "flex" }}>{Option}</div>
+						<div style={style.Track_title}>aa</div>
+						<div style={style.Track_artist}>bb</div>
+						{/* <div style={{ display: "flex" }}>{Option}</div> */}
 					</div>
 					{/* <div style={style.Score}>
 						<div style={style.Score_label}>Score</div>
@@ -326,25 +326,25 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 					</div> */}
 					<div style={style.Rank}>
 						<div style={style.Rank_label}>Rank</div>
-						<div style={style.Rank_value}>{rank}</div>
+						<div style={style.Rank_value}>AA</div>
 					</div>
 					<div style={style.Detail}>
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>JUST:</div>
-								<div style={style.Detail_table_row_value}>{just}</div>
+								<div style={style.Detail_table_row_value}>99</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>RUSH:</div>
-								<div style={style.Detail_table_row_value}>{rush}</div>
+								<div style={style.Detail_table_row_value}>88</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>COOL:</div>
-								<div style={style.Detail_table_row_value}>{cool}</div>
+								<div style={style.Detail_table_row_value}>77</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>MISS:</div>
-								<div style={style.Detail_table_row_value}>{miss}</div>
+								<div style={style.Detail_table_row_value}>66</div>
 							</div>
 						</div>
 						{/* <div style={style.Average}>
@@ -371,11 +371,11 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>CHAIN:</div>
-								<div style={style.Detail_table_row_value}>{chain}</div>
+								<div style={style.Detail_table_row_value}>55</div>
 							</div>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>ATTACK:</div>
-								<div style={style.Detail_table_row_value}>{attack}%</div>
+								<div style={style.Detail_table_row_value}>44%</div>
 							</div>
 						</div>
 					</div>
