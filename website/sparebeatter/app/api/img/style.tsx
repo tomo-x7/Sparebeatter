@@ -347,7 +347,7 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 								<div style={style.Detail_table_row_value}>{miss}</div>
 							</div>
 						</div>
-						<div style={style.Average}>
+						{/* <div style={style.Average}>
 							<div style={style.Average_before} />
 							<div style={{
 								display: "flex",
@@ -367,7 +367,7 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 								<div style={{ display: "flex" }}>{average}ms</div>
 							</div>
 							<div style={style.Average_after} />
-						</div>
+						</div> */}
 						<div style={style.Detail_table}>
 							<div style={style.Detail_table_row}>
 								<div style={style.Detail_table_row_label}>CHAIN:</div>
