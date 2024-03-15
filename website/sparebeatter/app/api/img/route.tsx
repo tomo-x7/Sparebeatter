@@ -30,7 +30,7 @@ export async function GET(rawrequest: NextRequest) {
 			{bind ? <div style={style.Track_bind}>BIND</div> : <></>}
 		</>
 	);
-	return new ImageResponse(elem(option,{title:'music'}), {
+	return new ImageResponse(elem(<></>,{}), {
 		width: 960,
 		height: 640,
 	});
