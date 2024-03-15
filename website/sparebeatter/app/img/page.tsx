@@ -9,5 +9,5 @@ export default function () {
 			<div style={style.Track_bind}>BIND</div>
 		</>
 	);
-	return elem(option);
+	return elem(option,{});
 }
