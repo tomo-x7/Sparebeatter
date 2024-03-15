@@ -47,7 +47,7 @@ export async function GET(rawrequest: NextRequest) {
 		chain: Number.parseInt(sp('chain')),
 		attack: Number.parseFloat(sp('attack')),
 	}
-	return new ImageResponse(elem(<></>, params), {
+	return new ImageResponse(elem(option, params), {
 		width: 960,
 		height: 640,
 	});

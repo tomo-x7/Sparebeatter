@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Home() {
 	return (<div>test page</div>);
 }
-
+export const dynamic='force-dynamic'
 export async function generateMetadata({searchParams}:{searchParams: { [key: string]: string | string[] | undefined };}) {
-	let querys:string=''
+	let querys=''
 	for(const key in searchParams){
 		querys+=`${key}=${searchParams[key]}&`
 	}

@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import polygon from "../../../public/polygon.png";
 export const style: {
-	[key: string]: { display: "flex";[key: string]: string | number };
+	[key: string]: { display: "flex"; [key: string]: string | number };
 } = {
 	ResultScreen: {
 		display: "flex",
@@ -231,19 +231,14 @@ export const style: {
 		background: "linear-gradient(#ceceff, white, #ffcece)",
 	},
 
-
-
 	Average_inner: {
 		display: "flex",
 
 		position: "absolute",
 		top: "50%",
 		left: "0",
-		width: "0",
-		height: "0",
-		borderStyle: "solid",
-		borderWidth: "8px 8px 8px 0",
-		borderColor: "transparent #ff4e4e transparent transparent",
+		width: "8px",
+		height: "16px",
 		transform: "translateY(-50%)",
 	},
 
@@ -300,8 +295,24 @@ export const style: {
 		alignItems: "center",
 	},
 };
-export const elem = (Option: ReactElement, { title = 'music name', artist = 'artist name', score = 1000000, diff = -10000, rank = 'SSS', just = 999, rush = 100, cool = 200, miss = 300, average = 3.99, chain = 999, attack = 60.9 }) => {
-	const Average_value: { display: "flex";[key: string]: string | number } = {
+export const elem = (
+	Option: ReactElement,
+	{
+		title = "music name",
+		artist = "artist name",
+		score = 1000000,
+		diff = -10000,
+		rank = "SSS",
+		just = 999,
+		rush = 100,
+		cool = 200,
+		miss = 300,
+		average = 3.99,
+		chain = 999,
+		attack = 60.9,
+	},
+) => {
+	const Average_value: { display: "flex"; [key: string]: string | number } = {
 		display: "flex",
 		bottom: `${average + 50}%`,
 		position: "absolute",
@@ -314,7 +325,9 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 		fontSize: "24px",
 		lineHeight: "24px",
 		transform: "translateY(50%)",
-	}
+	};
+	const diffs: string =
+		(diff < 0 ? "-" : "+") + Math.abs(diff).toString().padStart(6, "0");
 	return (
 		<>
 			<div id="rerere" style={style.ResultScreen}>
@@ -328,7 +341,7 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 					<div style={style.Score}>
 						<div style={style.Score_label}>Score</div>
 						<div style={style.Score_value}>{score}</div>
-						<div style={style.Score_diff}>[ {diff} ]</div>
+						<div style={style.Score_diff}>[ {diffs} ]</div>
 					</div>
 					<div style={style.Rank}>
 						<div style={style.Rank_label}>Rank</div>
@@ -356,8 +369,18 @@ export const elem = (Option: ReactElement, { title = 'music name', artist = 'art
 						<div style={style.Average}>
 							<div style={style.Average_before} />
 							<div style={Average_value}>
-								<div style={style.Average_inner} />
-								<div style={{ display: "flex" }}>{average}ms</div>
+								{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+								<svg
+									style={style.Average_inner}
+									width="8"
+									height="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path d="m8,0l-8,8l8,8" fill="#FF0000" id="svg_2" />
+								</svg>
+								<div style={{ display: "flex" }}>
+									{(average < 0 ? "-" : "+") + average.toFixed(3)}ms
+								</div>
 							</div>
 							<div style={style.Average_after} />
 						</div>
