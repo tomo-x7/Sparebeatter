@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import polygon from "../../../public/polygon.png";
 export const style: {
-	[key: string]: { display: "flex"; [key: string]: string | number };
+	[key: string]: { [key: string]: string | number };
 } = {
 	twitter_wrapper: {
 		display: "flex",
@@ -410,7 +410,7 @@ export const elem = (
 		</div>
 	);
 	if (istwitter) {
-		return <div style={style.wrapper}>{main}</div>;
+		return <div style={style.twitter_wrapper}>{main}</div>;
 	}
 	return main;
 };
