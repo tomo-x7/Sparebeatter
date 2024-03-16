@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function POST(req: NextRequest) {
-	const longurl = (await req.json()).url;
+export async function GET(req: NextRequest) {
+	const longurl = new URL(req.url).searchParams.get('url')
 	const token = "5muyBudWsWYqwPHOPEAKxCw0iBgv8wl3kOrYHA6zJflh7odf7Qy5kqhDJAU5";
 	const body = JSON.stringify({
 		url: longurl,
