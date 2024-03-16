@@ -415,7 +415,7 @@ export const elem = (
 			<div style={style.credit}>made by sparebeatter</div>
 		</div>
 	);
-	if (src==='twitter'||src==='line'||src==='facebook') {
+	if (src==='twitter'||src==='line'||src==='facebook'||src==='bluesky') {
 		return <div style={style.twitter_wrapper}>{main}</div>;
 	}
 	return main;

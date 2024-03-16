@@ -51,7 +51,7 @@ export async function GET(rawrequest: NextRequest) {
 		backcolor2:searchParams.has('backcolor2')?sp('backcolor2'):undefined,
 		src:src,
 	}
-	if(src==='twitter'||src==='line'||src==='facebook'){
+	if(src==='twitter'||src==='line'||src==='facebook'||src==='bluesky'){
 		return new ImageResponse(elem(option, params), {
 			width:1222,
 			height: 640,
