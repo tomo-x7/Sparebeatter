@@ -313,7 +313,7 @@ export const elem = (
 		attack = 0,
 		backcolor1 = "1f96e7cc",
 		backcolor2 = "486ae7cc",
-		istwitter = false,
+		src="copy",
 	},
 ) => {
 	const Average_value: { [key: string]: string | number } = {
@@ -415,7 +415,7 @@ export const elem = (
 			<div style={style.credit}>made by sparebeatter</div>
 		</div>
 	);
-	if (istwitter) {
+	if (src==='twitter'||src==='line'||src==='facebook') {
 		return <div style={style.twitter_wrapper}>{main}</div>;
 	}
 	return main;
