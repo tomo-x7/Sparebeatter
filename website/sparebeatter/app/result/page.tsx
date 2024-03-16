@@ -1,14 +1,20 @@
 import Image from "next/image";
-
-export default function Home() {
+import style from './stylesheet.module.css'
+export default function Home({searchParams}:{searchParams:{[key:string]:string|number}}) {
 	let querys = "";
 	for (const key in searchParams) {
 		querys += `${key}=${searchParams[key]}&`;
 	}
 	return (
 		<div>
-			<img src={`https://sparebeatter.vercel.app/api/img?${querys}`}></img>test
-			page
+			<p><a href="https://beta.sparebeat.com" target="__blank" rel="noopener noreferrer">Sparebeat</a>の「{searchParams.title}/{searchParams.artist}」({searchParams.difficult}) で{searchParams.score}点(ランク{searchParams.rank})を獲得しました！</p>
+			<img className={style.result}
+				src={`https://sparebeatter.vercel.app/api/img?${querys}`}
+				alt="result"
+			/>
+			<div>made by <a href="/">sparebeatter</a><br />
+			ダウンロードは<a href="https://github.com/tomo-x7/Sparebeatter/releases" target="__blank" rel="noopener noreferrer">こちら</a>から
+			</div>
 		</div>
 	);
 }
