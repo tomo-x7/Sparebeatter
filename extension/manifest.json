@@ -32,5 +32,8 @@
 	"action": {
 		"default_icon": "images/icon38.png",
 		"default_popup": "src/action/popup.html"
-	}
+	},
+	"host_permissions": [
+		"https://sparebeatter.vercel.app/"
+	]
 }

@@ -3,18 +3,35 @@
 <head>
     <meta charset="utf-8">
 </head>
+<style>
+    #buttons {
+        display: flex;
+        flex-direction: column;
+        grid-row: 3;
+    }
+
+    .share {
+        text-align: left;
+    }
+</style>
 
 <body style="width: 300px;">
-    <button id="main" type="button">Tweetする</button>
-    <div id="log" style="height: auto;"></div>
+    <div id="buttons">
+        <button id="twitter" type="button" class="share">ツイートする</button>
+        <button id="line" type="button" class="share">LINEに送信</button>
+        <button id="bluesky" type="button" class="share">Blueskyにポストする</button>
+        <button id="facebook" type="button" class="share">Facebookにポストする</button>
+        <button id="copy" type="button" class="share">テキストをコピーする</button>
+        <button id="copyphoto" type="button" class="share">画像をコピー</button>
+        <button id="share" type="button" class="share">共有する</button>
+        <div id="log" style="height: auto;"></div>
+    </div>
     <hr>
     <div>
         <h3>使い方</h3>
-        <ol>
-            <li>リザルト画面で上のTweetするボタンを押す</li>
-            <li>画像がコピーされた状態でツイート画面が開く</li>
-            <li>貼り付ける</li>
-        </ol>
+        <p>リザルト画面で上のボタンを押す
+            <br>※Blueskyに投稿する際、編集する必要がない場合でも必ずスペースを入力→削除などして「リンクカードを追加」ボタンを押してください
+        </p>
     </div>
     <script type="module" src="./popup.js"></script>
 </body>

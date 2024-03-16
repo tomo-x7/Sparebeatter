@@ -8,7 +8,7 @@ const gec = (classname,num=0) => {
 };
 const rgb2hex=(inputrgba)=>{
     const rgba = inputrgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/)
- return (rgba && rgba.length === 5) ? `#${(`0${Number.parseInt(rgba[1]).toString(16)}`).slice(-2)}${(`0${Number.parseInt(rgba[2]).toString(16)}`).slice(-2)}${(`0${Number.parseInt(rgba[3]).toString(16)}`).slice(-2)}${(`0${(255*Number.parseFloat(rgba[4])).toString(16)}`).slice(-2)}` : '';
+ return (rgba && rgba.length === 5) ? `${(`0${Number.parseInt(rgba[1]).toString(16)}`).slice(-2)}${(`0${Number.parseInt(rgba[2]).toString(16)}`).slice(-2)}${(`0${Number.parseInt(rgba[3]).toString(16)}`).slice(-2)}${(`0${(255*Number.parseFloat(rgba[4])).toString(16)}`).slice(-2)}` : '';
 }
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	if (request.message === "screenshot") {
@@ -20,13 +20,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 			const score = gec("Score_value");
 			const rank = gec("Rank_value");
 			const message = `Sparebeatの「${tracktitle}/${trackartist}」(${difficulty}) で${score}点(ランク${rank})を獲得しました！`;
-			const encodedmessage = encodeURIComponent(message);
 			const options = (gec("Track_layout")?`&${gec("Track_layout")}=`:'') + (gec("Track_bind")?`&${gec("Track_bind")}=`:'')
 			const baseURL='https://sparebeatter.vercel.app/result/'
-			const querys = `?title=${tracktitle}&artist=${trackartist}&difficult=${difficulty.toLowerCase()}${options.toLowerCase()}&score=${score}&diff=${gec('Score_diff')}&rank=${gec('Rank_value')}&just=${gec('Detail_table_row_value',0)}&rush=${gec('Detail_table_row_value',1)}&cool=${gec('Detail_table_row_value',2)}&miss=${gec('Detail_table_row_value',3)}&average=${gec('Average_value').replaceAll('ms','')}&chain=${gec('Detail_table_row_value',4)}&attack=${gec('Detail_table_row_value',5).replaceAll('%','')}&backcolor1=${rgb2hex(a.match(/rgba\((.*?)\)/g)[0])}&backcolor2=${rgb2hex(a.match(/rgba\((.*?)\)/g)[1])}&src=${request.src}`;
+			const querys = `?title=${encodeURIComponent(tracktitle)}&artist=${encodeURIComponent(trackartist)}&difficult=${difficulty.toLowerCase()}${options.toLowerCase()}&score=${score}&diff=${gec('Score_diff').replaceAll(/[\[\]]/g,'')}&rank=${gec('Rank_value')}&just=${gec('Detail_table_row_value',0)}&rush=${gec('Detail_table_row_value',1)}&cool=${gec('Detail_table_row_value',2)}&miss=${gec('Detail_table_row_value',3)}&average=${gec('Average_value').replaceAll('ms','')}&chain=${gec('Detail_table_row_value',4)}&attack=${gec('Detail_table_row_value',5).replaceAll('%','')}&backcolor1=${rgb2hex(elem.style.backgroundImage.match(/rgba\((.*?)\)/g)[0])}&backcolor2=${rgb2hex(elem.style.backgroundImage.match(/rgba\((.*?)\)/g)[1])}&src=${request.src}`;
 
 			sendResponse({
-				message: encodedmessage,
+				message: message,
 				url: baseURL+querys,
 			});
 		} else {
