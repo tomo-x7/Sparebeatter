@@ -1,5 +1,4 @@
 import type { ReactElement } from "react";
-import polygon from "../../../public/polygon.png";
 export const style: {
 	[key: string]: { [key: string]: string | number };
 } = {

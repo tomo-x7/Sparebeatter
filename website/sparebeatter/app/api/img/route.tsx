@@ -33,6 +33,7 @@ export async function GET(rawrequest: NextRequest) {
 			{bind ? <div style={style.Track_bind}>BIND</div> : <></>}
 		</>
 	);
+	const src=sp('src')
 	const params = {
 		title: sp('title'),
 		artist: sp('artist'),
@@ -48,10 +49,16 @@ export async function GET(rawrequest: NextRequest) {
 		attack: Number.parseFloat(sp('attack')),
 		backcolor1:searchParams.has('backcolor1')?sp('backcolor1'):undefined,
 		backcolor2:searchParams.has('backcolor2')?sp('backcolor2'):undefined,
-		istwitter:sp('src')==='twitter',
+		src:src,
+	}
+	if(src==='twitter'||src==='line'||src==='facebook'){
+		return new ImageResponse(elem(option, params), {
+			width:1222,
+			height: 640,
+		});
 	}
 	return new ImageResponse(elem(option, params), {
-		width: params.istwitter?1222:960,
+		width: 960,
 		height: 640,
 	});
 }
