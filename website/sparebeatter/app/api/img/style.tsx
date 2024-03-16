@@ -289,6 +289,12 @@ export const style: {
 		justifyContent: "center",
 		alignItems: "center",
 	},
+	credit:{
+		position: "absolute",
+		bottom:"0px",
+		right:"0px",
+		color:"#ffffff",
+	},
 };
 export const elem = (
 	Option: ReactElement,
@@ -406,6 +412,7 @@ export const elem = (
 				<div style={style.Publish}>タイムラインに投稿</div>
 				<div style={style.Escape}>Escape</div>
 			</div>
+			<div style={style.credit}>made by sparebeatter</div>
 		</div>
 	);
 	if (istwitter) {
