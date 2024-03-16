@@ -47,8 +47,8 @@ export async function GET(rawrequest: NextRequest) {
 		average: Number.parseFloat(sp('average')),
 		chain: Number.parseInt(sp('chain')),
 		attack: Number.parseFloat(sp('attack')),
-		backcolor1:searchParams.has('backcolor1')?sp('backcolor1'):undefined,
-		backcolor2:searchParams.has('backcolor2')?sp('backcolor2'):undefined,
+		backcolor1:searchParams.has('backcolor1')?sp('backcolor1').replaceAll('0','1'):undefined,
+		backcolor2:searchParams.has('backcolor2')?sp('backcolor2').replaceAll('0','1'):undefined,
 		src:src,
 	}
 	if(src==='twitter'||src==='line'||src==='facebook'||src==='bluesky'){
