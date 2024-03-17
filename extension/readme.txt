@@ -17,5 +17,9 @@ Sparebeatter V2
 エディターキーコンフィグ
 ・MapEditorでテストプレイを開いた状態で右上の拡張機能のところからSparebeatterを開いて、キーコンフィグを設定できます
 
+エラーが起きた場合
+まずはChromeの拡張機能のページ(chrome://extensions/)にアクセスして、Sparebeatterを再読み込みしてみてください。  
+それでも解決しない場合は下記お問い合わせ先まで報告をお願いします。
+
 
 バグ報告やお問い合わせはTwitter(https://twitter.com/tomo_x_79)、Github(https://github.com/tomo-x7/Sparebeatter)、またはDiscordの非公式Sparebeat交流鯖まで
