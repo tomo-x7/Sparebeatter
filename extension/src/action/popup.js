@@ -52,8 +52,12 @@ const facebookpost = (text, url) => {
 	window.open(`https://www.facebook.com/share.php?u=${encodeURIComponent(url)}`)
 }
 const copyurl = (text, url) => {
+	try{
 	navigator.clipboard.writeText((`${text}\n${url}`))
-}
+	log.innerText='Copyed!'
+}catch(e){
+	log.innerText='フォーカスが外れたため失敗しました。もう一度やり直してください'
+}}
 const copyphoto = (text, url) => {
 	log.innerText='Loading...'
 	fetch((url.replace('result', 'api/img')))
