@@ -1,6 +1,6 @@
 import { style, elem } from "../api/img/style";
 
-export default function () {
+export default function Page() {
 	const option = (
 		<>
 			<div style={style.hard}>HARD </div>
@@ -9,5 +9,5 @@ export default function () {
 			<div style={style.Track_bind}>BIND</div>
 		</>
 	);
-	return elem(option,{});
+	return elem(option, {});
 }

@@ -1,19 +1,50 @@
 import Image from "next/image";
-import style from './stylesheet.module.css'
-export default function Home({searchParams}:{searchParams:{[key:string]:string|number}}) {
+import style from "./stylesheet.module.css";
+export default function Home({
+	searchParams,
+}: { searchParams: { [key: string]: string | number } }) {
 	let querys = "";
 	for (const key in searchParams) {
-		querys += `${key}=${searchParams[key]}&`;
+		if (key === "src") {
+			querys+='src=page&'
+		} else {
+			querys += `${key}=${searchParams[key]}&`;
+		}
 	}
 	return (
-		<div>
-			<p><a href="https://beta.sparebeat.com" target="__blank" rel="noopener noreferrer">Sparebeat</a>の「{searchParams.title}/{searchParams.artist}」({searchParams.difficult}) で{searchParams.score}点(ランク{searchParams.rank})を獲得しました！</p>
-			<img className={style.result}
+		<div style={{maxWidth:"min(calc(100vh*1.2),960px)"}}>
+			<p>
+				<a
+					href="https://beta.sparebeat.com"
+					target="__blank"
+					rel="noopener noreferrer"
+				>
+					Sparebeat
+				</a>
+				の「{searchParams.title}/{searchParams.artist}」(
+				{searchParams.difficult}) で{searchParams.score}点(ランク
+				{searchParams.rank})を獲得しました！
+			</p>
+			<Image
+				layout="responsive"
+				sizes="(max-width:calc(100vh*1.2)) 960px, 640px"
+					width={960}
+					height={640}
 				src={`https://sparebeatter.vercel.app/api/img?${querys}`}
 				alt="result"
 			/>
-			<div>made by <a href="/">sparebeatter</a><br />
-			ダウンロードは<a href="https://github.com/tomo-x7/Sparebeatter/releases" target="__blank" rel="noopener noreferrer">こちら</a>から
+			<div>
+				made by <a href="/">sparebeatter</a>
+				<br />
+				ダウンロードは
+				<a
+					href="https://github.com/tomo-x7/Sparebeatter/releases"
+					target="__blank"
+					rel="noopener noreferrer"
+				>
+					こちら
+				</a>
+				から
 			</div>
 		</div>
 	);
