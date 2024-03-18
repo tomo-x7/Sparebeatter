@@ -12,7 +12,7 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
 
 function setAction(url) {
 	// console.log(url);
-	const pattern = /^https:\/\/beta.sparebeat.com\/play\//;
+	const pattern = /^https:\/\/beta.sparebeat.com\/play\/|https:\/\/beta.sparebeat.com\/simulator/;
 	const pattern2 = /^https:\/\/beta.sparebeat.com\//;
 	const editorURL = /^https:\/\/spbe.bo-yakitarako.dev\//
 	if (pattern.test(url)) {
