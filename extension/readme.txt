@@ -1,4 +1,4 @@
-Sparebeatter V2
+Sparebeatter V3.1
 
 本拡張機能はChrome系ブラウザのみに対応しています。動作確認はChromeのみです。
 

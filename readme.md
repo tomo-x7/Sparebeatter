@@ -1,4 +1,4 @@
-# Sparebeatter V2
+# Sparebeatter V3.1
 ## 対応ブラウザ
 Chromeでしか動作確認していません。
 ## インストール方法
