@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import type React from "react";
 export const style: {
 	[key: string]: { [key: string]: string | number };
 } = {
@@ -289,11 +290,11 @@ export const style: {
 		justifyContent: "center",
 		alignItems: "center",
 	},
-	credit:{
+	credit: {
 		position: "absolute",
-		bottom:"0px",
-		right:"0px",
-		color:"#ffffff",
+		bottom: "0px",
+		right: "0px",
+		color: "#ffffff",
 	},
 };
 export const elem = (
@@ -313,7 +314,11 @@ export const elem = (
 		attack = 0,
 		backcolor1 = "1f96e7cc",
 		backcolor2 = "486ae7cc",
-		src="copy",
+		src = "copy",
+	}: {
+		diff: "none" | number;
+		average: number;
+		[key: string]: string | number | undefined;
 	},
 ) => {
 	const Average_value: { [key: string]: string | number } = {
@@ -341,8 +346,15 @@ export const elem = (
 		backgroundColor: "#414141",
 		fontFamily: "Nova Mono, sans-serif",
 	};
-	const diffs: string =
-		(diff < 0 ? "-" : "+") + Math.abs(diff).toString().padStart(6, "0");
+
+	let diffelem: React.ReactElement;
+	if (diff === "none") {
+		diffelem = <div style={style.Score_diff}> </div>;
+	} else {
+		const diffs: string = (diff < 0 ? "-" : "+") + Math.abs(diff).toString().padStart(6, "0");
+		diffelem = <div style={style.Score_diff}>[ {diffs} ]</div>;
+	}
+
 	const main = (
 		<div id="rerere" style={ResultScreen}>
 			<div style={style.ResultScreen_before} />
@@ -355,7 +367,7 @@ export const elem = (
 				<div style={style.Score}>
 					<div style={style.Score_label}>Score</div>
 					<div style={style.Score_value}>{score}</div>
-					<div style={style.Score_diff}>[ {diffs} ]</div>
+					{diffelem}
 				</div>
 				<div style={style.Rank}>
 					<div style={style.Rank_label}>Rank</div>
@@ -384,17 +396,10 @@ export const elem = (
 						<div style={style.Average_before} />
 						<div style={Average_value}>
 							{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-							<svg
-								style={style.Average_inner}
-								width="8"
-								height="16"
-								xmlns="http://www.w3.org/2000/svg"
-							>
+							<svg style={style.Average_inner} width="8" height="16" xmlns="http://www.w3.org/2000/svg">
 								<path d="m8,0l-8,8l8,8" fill="#FF0000" id="svg_2" />
 							</svg>
-							<div style={{ display: "flex" }}>
-								{(average < 0 ? "-" : "+") + average.toFixed(3)}ms
-							</div>
+							<div style={{ display: "flex" }}>{(average < 0 ? "-" : "+") + average.toFixed(3)}ms</div>
 						</div>
 						<div style={style.Average_after} />
 					</div>
@@ -415,7 +420,7 @@ export const elem = (
 			<div style={style.credit}>made by sparebeatter</div>
 		</div>
 	);
-	if (src==='twitter'||src==='line'||src==='facebook'||src==='bluesky') {
+	if (src === "twitter" || src === "line" || src === "facebook" || src === "bluesky") {
 		return <div style={style.twitter_wrapper}>{main}</div>;
 	}
 	return main;
