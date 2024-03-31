@@ -42,7 +42,7 @@ export async function GET(rawrequest: NextRequest) {
 		title: sp("title"),
 		artist: sp("artist"),
 		score: Number.parseInt(sp("score")),
-		diff: sp("diff") === "none" ? "none" : Number.parseInt(sp("diff")),
+		diff: sp("diff") === "none" ? "none" : Number.parseInt(sp("diff").replaceAll(/[\[\]]/g,'')),
 		rank: sp("rank"),
 		just: Number.parseInt(sp("just")),
 		rush: Number.parseInt(sp("rush")),
