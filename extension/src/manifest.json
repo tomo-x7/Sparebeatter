@@ -3,12 +3,7 @@
 	"version": "2.0.0",
 	"manifest_version": 3,
 	"description": "・sparebeat(beta)のリザルトをツイートします。\n・MapEditorのキーコンフィグを設定できます。",
-	"permissions": [
-		"tabs",
-		"declarativeContent",
-		"clipboardWrite",
-		"clipboardRead"
-	],
+	"permissions": ["tabs", "declarativeContent", "clipboardWrite", "clipboardRead"],
 	"icons": {
 		"128": "images/icon128.png",
 		"48": "images/icon48.png",
@@ -17,23 +12,21 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["https://beta.sparebeat.com/*","https://beta.sparebeat.com/simulator*"],
-			"js": ["src/content/contentSp.js"]
+			"matches": ["https://beta.sparebeat.com/*", "https://beta.sparebeat.com/simulator*"],
+			"js": ["scripts/contentScripts.js"]
 		},
 		{
-			"matches":["https://sparebeat.com/embed/"],
-			"js":["src/content/editorembed.js"],
+			"matches": ["https://sparebeat.com/embed/"],
+			"js": ["scripts/editorScripts.js"],
 			"all_frames": true
 		}
 	],
 	"background": {
-		"service_worker": "src/background/background.js"
+		"service_worker": "scripts/backgroundScripts.js"
 	},
 	"action": {
 		"default_icon": "images/icon38.png",
-		"default_popup": "src/action/popup.html"
+		"default_popup": "scripts/popup.html"
 	},
-	"host_permissions": [
-		"https://sparebeatter.vercel.app/"
-	]
+	"host_permissions": ["https://sparebeatter.vercel.app/"]
 }

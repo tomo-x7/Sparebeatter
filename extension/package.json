@@ -1,0 +1,27 @@
+{
+	"name": "sparebeatter",
+	"version": "1.0.0",
+	"main": "",
+	"license": "UNLICENSED",
+	"devDependencies": {
+		"@babel/core": "^7.24.9",
+		"@babel/preset-env": "^7.24.8",
+		"@babel/preset-react": "^7.24.7",
+		"@babel/preset-typescript": "^7.24.7",
+		"@babel/register": "^7.24.6",
+		"@types/chrome": "^0.0.268",
+		"@types/react": "^18.3.3",
+		"babel-loader": "^9.1.3",
+		"copy-webpack-plugin": "^12.0.2",
+		"webpack": "^5.93.0",
+		"webpack-cli": "^5.1.4"
+	},
+	"scripts": {
+		"webpack": "webpack --stats-error-details"
+	},
+	"dependencies": {
+		"next": "^14.2.5",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	}
+}
