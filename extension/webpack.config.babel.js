@@ -24,17 +24,8 @@ export default {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.js$|\.ts$/,
 				use: { loader: "babel-loader" },
-			},
-			{
-				test: /\.ts$|\.tsx$/,
-				use: {
-					loader: "babel-loader",
-					options: {
-						presets: ["@babel/preset-react"],
-					},
-				},
 			},
 		],
 	},
@@ -56,5 +47,5 @@ export default {
 			],
 		}),
 	],
-	resolve: { extensions: [".ts", ".js", ".tsx"] },
+	resolve: { extensions: [".ts", ".js"] },
 };
