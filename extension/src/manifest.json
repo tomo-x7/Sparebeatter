@@ -3,7 +3,7 @@
 	"version": "2.0.0",
 	"manifest_version": 3,
 	"description": "・sparebeat(beta)のリザルトをツイートします。\n・MapEditorのキーコンフィグを設定できます。",
-	"permissions": ["tabs", "declarativeContent", "clipboardWrite", "clipboardRead", "declarativeNetRequest"],
+	"permissions": ["tabs", "clipboardWrite"],
 	"icons": {
 		"128": "images/icon128.png",
 		"48": "images/icon48.png",
