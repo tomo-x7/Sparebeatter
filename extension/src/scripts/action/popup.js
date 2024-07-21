@@ -99,3 +99,22 @@ const functions = {
 	copyphoto: copyphoto,
 	share: share,
 };
+
+document.getElementById("setOverwrite").addEventListener("click", () => {
+	const just = document.getElementById("just");
+	const good = document.getElementById("good");
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs
+			.sendMessage(tabs[0].id, { message: "setOverwrite", just: just.value, good: good.value })
+			.then(async (item) => {
+				console.log("success");
+			});
+	});
+});
+document.getElementById("disableOverwrite").addEventListener("click", () => {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { message: "disableOverwrite" }).then(async (item) => {
+			console.log("success");
+		});
+	});
+});

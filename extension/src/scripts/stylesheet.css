@@ -1,0 +1,11 @@
+.overwrite .Publish {
+    display: none !important;
+}
+
+.overwrite .capture {
+    display: none !important;
+}
+
+.fullchain {
+    color: red;
+}

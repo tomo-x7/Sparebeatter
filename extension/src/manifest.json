@@ -3,7 +3,7 @@
 	"version": "2.0.0",
 	"manifest_version": 3,
 	"description": "・sparebeat(beta)のリザルトをツイートします。\n・MapEditorのキーコンフィグを設定できます。",
-	"permissions": ["tabs", "declarativeContent", "clipboardWrite", "clipboardRead"],
+	"permissions": ["tabs", "declarativeContent", "clipboardWrite", "clipboardRead", "declarativeNetRequest"],
 	"icons": {
 		"128": "images/icon128.png",
 		"48": "images/icon48.png",
@@ -13,12 +13,19 @@
 	"content_scripts": [
 		{
 			"matches": ["https://beta.sparebeat.com/*", "https://beta.sparebeat.com/simulator*"],
-			"js": ["scripts/contentScripts.js"]
+			"js": ["scripts/contentScripts.js"],
+			"css": ["stylesheet.css"]
 		},
 		{
 			"matches": ["https://sparebeat.com/embed/"],
 			"js": ["scripts/editorScripts.js"],
 			"all_frames": true
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"matches": ["https://beta.sparebeat.com/*"],
+			"resources": ["scripts/embedScripts.js"]
 		}
 	],
 	"background": {

@@ -32,7 +32,8 @@
         margin-left: 3px;
     }
 
-    .share:hover,.share:focus-visible {
+    .share:hover,
+    .share:focus-visible {
         background-color: darkgray;
     }
 </style>
@@ -53,6 +54,20 @@
         <h3>使い方</h3>
         <p>リザルト画面で上のボタンを押す
             <br>※Blueskyに投稿する際、編集する必要がない場合でも必ずスペースを入力→削除などして「リンクカードを追加」ボタンを押してください
+        </p>
+    </div>
+    <h2>判定調節</h2>
+    <p style="color: red;">注：この機能を使ってタイムラインへの投稿、段位認定などを行わないでください</p>
+    <label>RUSH/COOL:<input type="number" max="100" min="0" id="good"></label>
+    <label>JUST:<input type="number" max="35" min="0" id="just"></label>
+    <button id="setOverwrite" type="button" style="color: red;">設定</button>
+    <button id="disableOverwrite" type="button">解除</button>
+    <div>
+        <h3>使い方</h3>
+        <p>
+            <a>ここ</a>を参考にオーバーライドの設定をする
+            <br>上のボックスに数値を入力して設定を押す
+            <br><span style="color: red;">拡張機能を削除する前にオーバーライドを解除してください</span>
         </p>
     </div>
     <script type="module" src="./popup.js"></script>
