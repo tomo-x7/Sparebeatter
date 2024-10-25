@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import type React from "react";
 export const style: {
-	[key: string]: { [key: string]: string | number };
+	[key: string]: React.CSSProperties;
 } = {
 	twitter_wrapper: {
 		display: "flex",
@@ -321,7 +321,7 @@ export const elem = (
 		[key: string]: string | number | undefined;
 	},
 ) => {
-	const Average_value: { [key: string]: string | number } = {
+	const Average_value: React.CSSProperties = {
 		display: "flex",
 		bottom: `${average + 50}%`,
 		position: "absolute",
@@ -335,7 +335,7 @@ export const elem = (
 		lineHeight: "24px",
 		transform: "translateY(50%)",
 	};
-	const ResultScreen: { [key: string]: string | number } = {
+	const ResultScreen: React.CSSProperties = {
 		display: "flex",
 		backgroundImage: `linear-gradient(#${backcolor1}, #${backcolor2}), url('https://beta.sparebeat.com/assets/images/polygon.png')`,
 		position: "relative",
@@ -397,9 +397,11 @@ export const elem = (
 						<div style={Average_value}>
 							{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 							<svg style={style.Average_inner} width="8" height="16" xmlns="http://www.w3.org/2000/svg">
-								<path d="m8,0l-8,8l8,8" fill="#FF0000" id="svg_2" />
+								<path d="m8,0l-8,8l8,8" fill="#FF0000" />
 							</svg>
-							<div style={{ display: "flex" }}>{(average < 0 ? "-" : "+") + average.toFixed(3)}ms</div>
+							<div style={{ display: "flex" }}>
+								{(average === 0 ? "±" : average < 0 ? "" : "+") + average.toFixed(3)}ms
+							</div>
 						</div>
 						<div style={style.Average_after} />
 					</div>

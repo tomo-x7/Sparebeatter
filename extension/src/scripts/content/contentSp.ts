@@ -1,12 +1,7 @@
-// import { GET } from "./createImg/route.tsx";
-// import "@types/chrome"
+import type { apires } from "./type";
 
 const head = document.head;
-const script = document.createElement("script");
-script.src = chrome.runtime.getURL("scripts/embedScripts.js");
-head.appendChild(script);
 
-const keys = { good: "sparebeatter_100", just: "sparebeatter_35" } as const;
 const gei = (id: string) => {
 	return document.getElementById(id);
 };
@@ -52,55 +47,27 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
 		}
 		return true;
 	}
-	if (request.message === "setOverwrite") {
-		localStorage.setItem("overwrite", "enable");
-
-		localStorage.setItem("good", request.good);
-		localStorage.setItem("just", request.just);
-		window[keys.good] = Number.parseInt(request.good) ?? 100;
-		window[keys.just] = Number.parseInt(request.just) ?? 35;
-		return true;
-	}
-	if (request.message === "disableOverwrite") {
-		localStorage.setItem("overwrite", "disable");
-		window[keys.good] = 100;
-		window[keys.just] = 35;
-		return true;
-	}
 	if (request.message === "fullchain") {
-		setTimeout(fullchain, 1000);
+		fullchain();
 	}
 });
 
-const set = () => {
-	if (localStorage.getItem("overwrite") === "enable") {
-		document.body.classList.add("overwrite");
-		console.log(Number.parseInt(localStorage.getItem("good") ?? "100") ?? 100);
-		setwindow(keys.good, Number.parseInt(localStorage.getItem("good") ?? "100") ?? 100);
-		setwindow(keys.just, Number.parseInt(localStorage.getItem("just") ?? "35") ?? 35);
-	} else {
-		setwindow(keys.good, 100);
-		setwindow(keys.just, 35);
-	}
-};
-const setwindow = (key: string, value: string | number) => {
-	window.postMessage({ type: "SPAREBEATTER_SETOVERWRITE", key, value }, "*");
-};
-set();
-setTimeout(set,1000)
-const fullchain = () => {
-	//	try {
-	fetch("/api/tracks/home")
-		.then((res) => res.json())
-		.then(({ tracks }) => {
-			for (const track of tracks) {
-				if (track.playStatuses.sort((a, b) => b.difficulty - a.difficulty)[0].isComplete) {
-					document
-						.getElementById(track.track.id)
-						?.getElementsByClassName("music-list-item-score")[0]
-						.classList.add("fullchain");
+const fullchain = async () => {
+	try {
+		await fetch("/api/tracks/home")
+			.then((res) => res.json() as Promise<apires>)
+			.then(({ tracks }) => {
+				for (const track of tracks) {
+					if (track.playStatuses.sort((a, b) => b.difficulty - a.difficulty)[0].isComplete) {
+						const thistrackelem = document.getElementById(track.track.id);
+						if (!thistrackelem) {
+							throw new Error();
+						}
+						thistrackelem.getElementsByClassName("music-list-item-score")[0].classList.add("fullchain");
+					}
 				}
-			}
-		});
-	//	} catch {}
+			});
+	} catch {
+		setTimeout(fullchain, 100);
+	}
 };

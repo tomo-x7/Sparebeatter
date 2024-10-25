@@ -9,7 +9,6 @@ export default {
 		contentScripts: path.join(__dirname, "src", "scripts", "content", "contentSP.ts"),
 		backgroundScripts: path.join(__dirname, "src", "scripts", "background", "background.ts"),
 		editorScripts: path.join(__dirname, "src", "scripts", "content", "editorembed.ts"),
-		embedScripts: path.join(__dirname, "src", "scripts", "content", "embed.ts"),
 	},
 	output: {
 		path: path.join(__dirname, "dist"),

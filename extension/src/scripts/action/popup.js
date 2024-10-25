@@ -100,24 +100,3 @@ const functions = {
 	copyphoto: copyphoto,
 	share: share,
 };
-
-document.getElementById("setOverwrite").addEventListener("click", () => {
-	const just = document.getElementById("just").value;
-	const good = document.getElementById("good").value;
-	if (just > 35 || good > 100) {
-		log2.innerText = "判定を緩くすることはできません";
-		return;
-	}
-	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-		chrome.tabs.sendMessage(tabs[0].id, { message: "setOverwrite", just: just, good: good }).then(async (item) => {
-			log2.innerText = "success";
-		});
-	});
-});
-document.getElementById("disableOverwrite").addEventListener("click", () => {
-	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-		chrome.tabs.sendMessage(tabs[0].id, { message: "disableOverwrite" }).then(async (item) => {
-			log2.innerText = "success";
-		});
-	});
-});

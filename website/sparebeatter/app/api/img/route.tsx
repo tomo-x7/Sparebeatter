@@ -48,7 +48,7 @@ export async function GET(rawrequest: NextRequest) {
 		rush: Number.parseInt(sp("rush")),
 		cool: Number.parseInt(sp("cool")),
 		miss: Number.parseInt(sp("miss")),
-		average: Number.parseFloat(sp("average")),
+		average: Number.parseFloat(sp("average").replace("±","")),
 		chain: Number.parseInt(sp("chain")),
 		attack: Number.parseFloat(sp("attack")),
 		backcolor1: searchParams.has("backcolor1") ? sp("backcolor1").replaceAll("0", "1") : undefined,
