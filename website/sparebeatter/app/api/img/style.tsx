@@ -419,7 +419,7 @@ export const elem = (
 				<div style={style.Publish}>タイムラインに投稿</div>
 				<div style={style.Escape}>Escape</div>
 			</div>
-			<div style={style.credit}>made by sparebeatter</div>
+			<div style={style.credit}>made by sparebeat_extensions</div>
 		</div>
 	);
 	if (src === "twitter" || src === "line" || src === "facebook" || src === "bluesky") {

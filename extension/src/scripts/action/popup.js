@@ -33,7 +33,7 @@ const sharebtnonclick = (src) => {
 };
 
 const tweet = (text, url) => {
-	const tweetTag = "Sparebeat,Sparebeatter";
+	const tweetTag = "Sparebeat,Sparebeat_extensions";
 	window.open(
 		`https://twitter.com/intent/post?text=${encodeURIComponent(text)}&hashtags=${tweetTag}&url=${encodeURIComponent(url)}`,
 		"_blank",
@@ -51,7 +51,7 @@ const blueskypost = (text, url) => {
 		.then((data) => data.json())
 		.then((data) => {
 			window.open(
-				`https://bsky.app/intent/compose?text=${text}%0D%0A%20%23sparebeat%20%23sparebeatter%20+%0D%0A${data.url}%20`,
+				`https://bsky.app/intent/compose?text=${text}%0D%0A%20%23sparebeat%20%23sparebeat_extensions%20+%0D%0A${data.url}%20`,
 			);
 		});
 };
@@ -77,12 +77,15 @@ const copyphoto = (text, url, img) => {
 		log.innerText = "Copyed without fetch";
 	} else {
 		fetch(url.replace("result", "api/img")).then((data) => {
-			data.blob().then((blob) => {
+			if(!data.ok){
+				log.innerText="画像の取得に失敗しました"
+			}
+			data.blob().then(async (blob) => {
 				if (!document.hasFocus()) {
 					log.innerText = "フォーカスが外れたため失敗しました。もう一度やり直してください";
 					return;
 				}
-				navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+				await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
 				log.innerText = "Copyed!";
 			});
 		});

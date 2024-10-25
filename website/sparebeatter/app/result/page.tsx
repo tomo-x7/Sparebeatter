@@ -34,7 +34,7 @@ export default function Home({
 				alt="result"
 			/>
 			<div>
-				made by <a href="/">sparebeatter</a>
+				made by <a href="/">sparebeat_extensions</a>
 				<br />
 				ダウンロードは
 				<a
@@ -60,16 +60,16 @@ export async function generateMetadata({
 	console.log(querys);
 	return {
 		metadataBase: new URL(
-			"https://sparebeatter-git-dev-tomo-xs-projects.vercel.app/result",
+			"https://sparebeatter.vercel.app/result",
 		),
-		title: "sparebeatter",
+		title: "sparebeat_extensions",
 		description:
 			"sparebeatのリザルトをツイート、Map Editorのキーコンフィグの変更などの便利機能詰め合わせ拡張機能",
 		openGraph: {
-			title: "sparebeatter",
+			title: "sparebeat_extensions",
 			description:
 				"sparebeatのリザルトをツイート、Map Editorのキーコンフィグの変更などの便利機能詰め合わせ拡張機能",
-			siteName: "sparebeatter",
+			siteName: "sparebeat_extensions",
 			type: "website",
 			images: { url: `https://sparebeatter.vercel.app/api/img?${querys}` },
 		},
@@ -78,7 +78,7 @@ export async function generateMetadata({
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: "sparebeatter",
+			title: "sparebeat_extensions",
 			description:
 				"sparebeatのリザルトをツイート、Map Editorのキーコンフィグの変更などの便利機能詰め合わせ拡張機能",
 			site: "@tomo_x_79",

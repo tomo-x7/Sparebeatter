@@ -1,4 +1,4 @@
-# Sparebeatter V3.1
+<!-- # Sparebeatter V3.1
 ## 対応ブラウザ
 Chromeでしか動作確認していません。
 ## インストール方法
@@ -15,4 +15,4 @@ Chromeでしか動作確認していません。
 1. MapEditorでテストプレイを開いた状態で右上の拡張機能のところからSparebeatterを開いて、キーコンフィグを設定できます
 ## エラーが起きた場合
 まずはChromeの拡張機能のページ(chrome://extensions/)にアクセスして、Sparebeatterを再読み込みしてみてください。  
-それでも解決しない場合は[Twitter](https://twitter.com/tomo_x_79)、[Github](https://github.com/tomo-x7/Sparebeatter)、またはDiscordの非公式Sparebeat交流鯖まで
+それでも解決しない場合は[Twitter](https://twitter.com/tomo_x_79)、[Github](https://github.com/tomo-x7/Sparebeatter)、またはDiscordの非公式Sparebeat交流鯖まで -->

@@ -1,8 +1,8 @@
 {
-	"name": "Sparebeatter",
+	"name": "Sparebeat extensions",
 	"version": "2.0.0",
 	"manifest_version": 3,
-	"description": "・sparebeat(beta)のリザルトをツイートします。\n・MapEditorのキーコンフィグを設定できます。",
+	"description": "Sparebeatの各種便利ツール（非公式）",
 	"permissions": ["tabs", "clipboardWrite"],
 	"icons": {
 		"128": "images/icon128.png",
