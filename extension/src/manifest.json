@@ -1,6 +1,6 @@
 {
 	"name": "Sparebeat extensions",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"manifest_version": 3,
 	"description": "Sparebeatの各種便利ツール（非公式）",
 	"permissions": ["tabs", "clipboardWrite"],
@@ -20,12 +20,6 @@
 			"matches": ["https://sparebeat.com/embed/"],
 			"js": ["scripts/editorScripts.js"],
 			"all_frames": true
-		}
-	],
-	"web_accessible_resources": [
-		{
-			"matches": ["https://beta.sparebeat.com/*"],
-			"resources": ["scripts/embedScripts.js"]
 		}
 	],
 	"background": {

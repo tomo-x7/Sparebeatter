@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
-	const longurl = new URL(req.url).searchParams.get('url')
+	const longurl = new URL(req.url).searchParams.get("url");
 	const body = JSON.stringify({
 		url: longurl,
 		domain: "tinyurl.com",
@@ -14,8 +14,5 @@ export async function GET(req: NextRequest) {
 		body: body,
 		method: "POST",
 	});
-	return NextResponse.json(
-		{ url: (await ret.json()).data.tiny_url },
-		{ status: ret.status },
-	);
+	return NextResponse.json({ url: (await ret.json()).data.tiny_url }, { status: ret.status });
 }

@@ -6,9 +6,9 @@ export default {
 	mode: "development",
 	devtool: "inline-source-map",
 	entry: {
-		contentScripts: path.join(__dirname, "src", "scripts", "content", "contentSP.ts"),
+		contentScripts: path.join(__dirname, "src", "scripts", "content", "contentScripts.ts"),
 		backgroundScripts: path.join(__dirname, "src", "scripts", "background", "background.ts"),
-		editorScripts: path.join(__dirname, "src", "scripts", "content", "editorembed.ts"),
+		editorScripts: path.join(__dirname, "src", "scripts", "content", "editorScripts.ts"),
 	},
 	output: {
 		path: path.join(__dirname, "dist"),
@@ -45,7 +45,7 @@ export default {
 					to: path.join(__dirname, "dist", "images"),
 				},
 				{
-					from: path.join(__dirname,"src","scripts","stylesheet.css"),
+					from: path.join(__dirname, "src", "scripts", "stylesheet.css"),
 					to: path.join(__dirname, "dist"),
 				},
 			],

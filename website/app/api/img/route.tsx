@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 import { elem, style } from "./style";
-import path from "node:path";
 
 const alt = "OGP画像";
 const size = {
@@ -42,13 +41,13 @@ export async function GET(rawrequest: NextRequest) {
 		title: sp("title"),
 		artist: sp("artist"),
 		score: Number.parseInt(sp("score")),
-		diff: sp("diff") === "none" ? "none" : Number.parseInt(sp("diff").replaceAll(/[\[\]]/g,'')),
+		diff: sp("diff") === "none" ? "none" : Number.parseInt(sp("diff").replaceAll(/[\[\]]/g, "")),
 		rank: sp("rank"),
 		just: Number.parseInt(sp("just")),
 		rush: Number.parseInt(sp("rush")),
 		cool: Number.parseInt(sp("cool")),
 		miss: Number.parseInt(sp("miss")),
-		average: Number.parseFloat(sp("average").replace("±","")),
+		average: Number.parseFloat(sp("average").replace("±", "")),
 		chain: Number.parseInt(sp("chain")),
 		attack: Number.parseFloat(sp("attack")),
 		backcolor1: searchParams.has("backcolor1") ? sp("backcolor1").replaceAll("0", "1") : undefined,

@@ -77,8 +77,8 @@ const copyphoto = (text, url, img) => {
 		log.innerText = "Copyed without fetch";
 	} else {
 		fetch(url.replace("result", "api/img")).then((data) => {
-			if(!data.ok){
-				log.innerText="画像の取得に失敗しました"
+			if (!data.ok) {
+				log.innerText = "画像の取得に失敗しました";
 			}
 			data.blob().then(async (blob) => {
 				if (!document.hasFocus()) {

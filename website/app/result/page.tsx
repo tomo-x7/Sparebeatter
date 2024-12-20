@@ -1,24 +1,17 @@
 import Image from "next/image";
-import style from "./stylesheet.module.css";
-export default function Home({
-	searchParams,
-}: { searchParams: { [key: string]: string | number } }) {
+export default function Home({ searchParams }: { searchParams: { [key: string]: string | number } }) {
 	let querys = "";
 	for (const key in searchParams) {
 		if (key === "src") {
-			querys+='src=page&'
+			querys += "src=page&";
 		} else {
 			querys += `${key}=${searchParams[key]}&`;
 		}
 	}
 	return (
-		<div style={{maxWidth:"min(calc(100vh*1.2),960px)"}}>
+		<div style={{ maxWidth: "min(calc(100vh*1.2),960px)" }}>
 			<p>
-				<a
-					href="https://beta.sparebeat.com"
-					target="__blank"
-					rel="noopener noreferrer"
-				>
+				<a href="https://beta.sparebeat.com" target="__blank" rel="noopener noreferrer">
 					Sparebeat
 				</a>
 				の「{searchParams.title}/{searchParams.artist}」(
@@ -28,8 +21,8 @@ export default function Home({
 			<Image
 				layout="responsive"
 				sizes="(max-width:calc(100vh*1.2)) 960px, 640px"
-					width={960}
-					height={640}
+				width={960}
+				height={640}
 				src={`https://sparebeatter.vercel.app/api/img?${querys}`}
 				alt="result"
 			/>
@@ -37,11 +30,7 @@ export default function Home({
 				made by <a href="/">sparebeat_extensions</a>
 				<br />
 				ダウンロードは
-				<a
-					href="https://github.com/tomo-x7/Sparebeatter/releases"
-					target="__blank"
-					rel="noopener noreferrer"
-				>
+				<a href="https://github.com/tomo-x7/Sparebeatter/releases" target="__blank" rel="noopener noreferrer">
 					こちら
 				</a>
 				から
@@ -59,12 +48,9 @@ export async function generateMetadata({
 	}
 	console.log(querys);
 	return {
-		metadataBase: new URL(
-			"https://sparebeatter.vercel.app/result",
-		),
+		metadataBase: new URL("https://sparebeatter.vercel.app/result"),
 		title: "sparebeat_extensions",
-		description:
-			"sparebeatのリザルトをツイート、Map Editorのキーコンフィグの変更などの便利機能詰め合わせ拡張機能",
+		description: "sparebeatのリザルトをツイート、Map Editorのキーコンフィグの変更などの便利機能詰め合わせ拡張機能",
 		openGraph: {
 			title: "sparebeat_extensions",
 			description:
