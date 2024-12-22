@@ -14,16 +14,8 @@
 	"linter": {
 		"rules": {
 			"a11y": { "useKeyWithClickEvents": "off" },
-			"style": { "noUselessElse": "off", "useImportType": "info" },
-			"correctness": { "noUnusedImports": "info" }
+			"style": { "noUselessElse": "off", "useImportType": "info", "noNonNullAssertion": "off" },
+			"correctness": { "noUnusedImports": "info", "useJsxKeyInIterable": "off" }
 		}
-	},
-	"overrides": [
-		{
-			"include": ["tsconfig.*.json"],
-			"json": {
-				"parser": { "allowComments": true, "allowTrailingCommas": true }
-			}
-		}
-	]
+	}
 }

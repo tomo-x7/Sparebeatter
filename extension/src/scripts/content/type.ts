@@ -9,7 +9,7 @@ type trackdata = {
 	id: string;
 };
 type playstatus = {
-	difficulty: number;
+	difficulty: 1 | 2 | 3;
 	bestScore: number;
 	isComplete: boolean;
 	isPerfect: boolean;

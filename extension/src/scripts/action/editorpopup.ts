@@ -1,15 +1,17 @@
-const log = document.getElementById("log");
+const log = document.getElementById("log")!;
 const keymap = { key1: 68, key2: 70, key3: 74, key4: 75, attack: 32 };
-const keybuttonlist = Array.from(document.getElementsByClassName("key"));
-let waitingkey = undefined;
+const keybuttonlist = Array.from(document.getElementsByClassName("key")) as HTMLSpanElement[];
+let waitingkey: HTMLSpanElement | undefined = undefined;
 
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+	if (!tabs[0].id) return;
 	chrome.tabs
 		.sendMessage(tabs[0].id, { message: "getkeyconfig" })
 		.then(async (res) => {
 			const map = JSON.parse(res);
 			for (const key in map) {
-				document.getElementById(key).innerText = String.fromCharCode(map[key]).replace(" ", "space");
+				const elem = document.getElementById(key);
+				if (elem) elem.innerText = String.fromCharCode(map[key]).replace(" ", "space");
 			}
 		})
 		.catch((e) => {
@@ -40,6 +42,7 @@ document.body.addEventListener("click", () => {
 
 addEventListener("keydown", (event) => {
 	if (!waitingkey) return;
+	// @ts-ignore
 	keymap[waitingkey.id] = event.keyCode;
 	waitingkey.innerText = event.keyCode === 32 ? "space" : event.key;
 	log.innerText = JSON.stringify(keymap);
@@ -48,6 +51,7 @@ addEventListener("keydown", (event) => {
 		keybuttonlist[num].classList.remove("select");
 	}
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		if (!tabs[0].id) return;
 		chrome.tabs
 			.sendMessage(tabs[0].id, { message: "setkeyconfig", keymap: JSON.stringify(keymap) })
 			.then(async (res) => {
@@ -62,3 +66,5 @@ addEventListener("keydown", (event) => {
 	});
 	event.stopPropagation();
 });
+
+export {};

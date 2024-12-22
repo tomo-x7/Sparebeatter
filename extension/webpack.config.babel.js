@@ -1,14 +1,17 @@
+//@ts-check
 // biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 import path from "path";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-
-export default {
+/** @returns {import('webpack').Configuration }*/
+export default (minify = false) => ({
 	mode: "development",
 	devtool: "inline-source-map",
 	entry: {
 		contentScripts: path.join(__dirname, "src", "scripts", "content", "contentScripts.ts"),
 		backgroundScripts: path.join(__dirname, "src", "scripts", "background", "background.ts"),
 		editorScripts: path.join(__dirname, "src", "scripts", "content", "editorScripts.ts"),
+		popup: path.join(__dirname, "src", "scripts", "action", "popup.ts"),
+		editorpopup: path.join(__dirname, "src", "scripts", "action", "editorpopup.ts"),
 	},
 	output: {
 		path: path.join(__dirname, "dist"),
@@ -16,15 +19,10 @@ export default {
 		clean: true,
 	},
 	target: "web",
-	devServer: {
-		contentBase: path.join(__dirname, "dist"),
-		port: 9000,
-		hot: true,
-	},
 	module: {
 		rules: [
 			{
-				test: /\.js$|\.ts$/,
+				test: /\.js$|\.ts$|\.tsx$/,
 				use: { loader: "babel-loader" },
 			},
 		],
@@ -39,6 +37,7 @@ export default {
 				{
 					from: path.join(__dirname, "src", "scripts", "action"),
 					to: path.join(__dirname, "dist", "scripts"),
+					filter: (path) => !/.*\.ts|.*\.tsx/.test(path),
 				},
 				{
 					from: path.join(__dirname, "src", "images"),
@@ -51,5 +50,5 @@ export default {
 			],
 		}),
 	],
-	resolve: { extensions: [".ts", ".js"] },
-};
+	resolve: { extensions: [".ts", ".js", ".tsx"] },
+});

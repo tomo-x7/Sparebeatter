@@ -5,7 +5,7 @@
 		"useDefineForClassFields": true,
 		"module": "ESNext",
 		"rootDir": "./src",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"baseUrl": "src",
 		"resolveJsonModule": true,
 		"allowJs": true,
@@ -15,8 +15,10 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"noEmit": true,
-		"isolatedModules": true
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js"
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", "dist", "./tsconfig.json"]
+	"exclude": ["node_modules", "dist"]
 }

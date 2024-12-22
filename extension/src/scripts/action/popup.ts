@@ -1,19 +1,20 @@
-const log = document.getElementById("log");
-const log2 = document.getElementById("log2");
+const log = document.getElementById("log")!;
+const log2 = document.getElementById("log2")!;
 
 const btns = Array.from(document.getElementsByClassName("share"));
 btns.forEach((btn, index) => {
 	btn.addEventListener("click", () => {
-		sharebtnonclick(btn.id);
+		sharebtnonclick(btn.id as keyof typeof functions);
 	});
 });
 
-const sharebtnonclick = (src) => {
+const sharebtnonclick = (src: keyof typeof functions) => {
 	log.innerText = "";
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		if (!tabs[0].id) return;
 		chrome.tabs
-			.sendMessage(tabs[0].id, { message: "screenshot", src: src })
-			.then(async (item) => {
+			.sendMessage(tabs[0].id, { message: "screenshot", src })
+			.then(async (item: { message: string; url: string; img: Blob | undefined }) => {
 				try {
 					console.log(item);
 					if (item.message === "noresult") {
@@ -23,7 +24,7 @@ const sharebtnonclick = (src) => {
 					const url = item.url;
 					functions[src](text, url, item.img ?? undefined);
 				} catch (e) {
-					log.innerText = e;
+					log.innerText = `${e}`;
 				}
 			})
 			.catch((e) => {
@@ -32,19 +33,19 @@ const sharebtnonclick = (src) => {
 	});
 };
 
-const tweet = (text, url) => {
+const tweet = (text: string, url: string) => {
 	const tweetTag = "Sparebeat,Sparebeat_extensions";
 	window.open(
 		`https://twitter.com/intent/post?text=${encodeURIComponent(text)}&hashtags=${tweetTag}&url=${encodeURIComponent(url)}`,
 		"_blank",
 	);
 };
-const lineshare = (text, url) => {
+const lineshare = (text: string, url: string) => {
 	window.open(
 		`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
 	);
 };
-const blueskypost = (text, url) => {
+const blueskypost = (text: string, url: string) => {
 	log.innerText = "Loading...";
 	const longurl = encodeURIComponent(url);
 	fetch(`https://sparebeatter.vercel.app/api/shorturl/?url=${longurl}`, { method: "GET" })
@@ -55,10 +56,10 @@ const blueskypost = (text, url) => {
 			);
 		});
 };
-const facebookpost = (text, url) => {
+const facebookpost = (text: string, url: string) => {
 	window.open(`https://www.facebook.com/share.php?u=${encodeURIComponent(url)}`);
 };
-const copyurl = (text, url) => {
+const copyurl = (text: string, url: string) => {
 	try {
 		navigator.clipboard.writeText(`${text}\n${url}`);
 		log.innerText = "Copyed!";
@@ -66,7 +67,7 @@ const copyurl = (text, url) => {
 		log.innerText = "フォーカスが外れたため失敗しました。もう一度やり直してください";
 	}
 };
-const copyphoto = (text, url, img) => {
+const copyphoto = (text: string, url: string, img?: Blob) => {
 	log.innerText = "Loading...";
 	if (img) {
 		if (!document.hasFocus()) {
@@ -91,7 +92,7 @@ const copyphoto = (text, url, img) => {
 		});
 	}
 };
-const share = (text, url) => {
+const share = (text: string, url: string) => {
 	navigator.share({ title: "sparebeat result", text: text, url: url });
 };
 const functions = {
@@ -100,6 +101,29 @@ const functions = {
 	bluesky: blueskypost,
 	facebook: facebookpost,
 	copy: copyurl,
-	copyphoto: copyphoto,
-	share: share,
+	copyphoto,
+	share,
 };
+const scorecheckButton = document.getElementById("scorecheck")!;
+scorecheckButton.addEventListener("click", () => {
+	log.innerText = "";
+	chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+		if (!tabs[0].id) return;
+		try {
+			scorecheckButton.innerHTML = '<div class="loader"></div>';
+			const data = await chrome.tabs.sendMessage(tabs[0].id, { message: "scorecheck" }).catch((e: string) => {
+				log.innerText = e;
+			});
+			console.log(JSON.stringify(data));
+			await navigator.clipboard.writeText(JSON.stringify(data));
+			log.innerText = "コピーしました";
+			scorecheckButton.innerText = "スコアチェッカー用のデータを取得";
+		} catch (e) {
+			console.error(e);
+			log.innerText = `${e}`;
+			scorecheckButton.innerText = "スコアチェッカー用のデータを取得";
+		}
+	});
+});
+
+export {};
