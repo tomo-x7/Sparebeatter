@@ -3,7 +3,7 @@
 import path from "path";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 /** @returns {import('webpack').Configuration }*/
-export default (minify = false) => ({
+export default (minify = false, isfirefox = false) => ({
 	mode: "development",
 	devtool: "inline-source-map",
 	entry: {
@@ -30,10 +30,9 @@ export default (minify = false) => ({
 	plugins: [
 		new CopyWebpackPlugin({
 			patterns: [
-				{
-					from: path.join(__dirname, "src", "manifest.json"),
-					to: path.join(__dirname, "dist"),
-				},
+				isfirefox
+					? { from: path.join(__dirname, "src", "manifest.firefox.json"), to: path.join(__dirname, "dist","manifest.json") }
+					: { from: path.join(__dirname, "src", "manifest.chrome.json"), to: path.join(__dirname, "dist","manifest.json") },
 				{
 					from: path.join(__dirname, "src", "scripts", "action"),
 					to: path.join(__dirname, "dist", "scripts"),

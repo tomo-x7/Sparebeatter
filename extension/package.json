@@ -23,8 +23,10 @@
 		"webpack-merge": "^6.0.1"
 	},
 	"scripts": {
-		"build": "webpack --stats-error-details",
-		"build:prod": "webpack --stats-error-details --config prod.webpack.config.babel.js"
+		"chrome": "webpack --stats-error-details",
+		"chrome:prod": "webpack --stats-error-details --config prod.webpack.config.babel.js",
+		"firefox": "webpack --stats-error-details --config firefox.webpack.config.babel.js",
+		"firefox:prod": "webpack --stats-error-details --config prod.firefox.webpack.config.babel.js"
 	},
 	"dependencies": {
 		"solid-js": "^1.9.3"
