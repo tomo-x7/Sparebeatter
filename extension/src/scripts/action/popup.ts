@@ -111,9 +111,11 @@ scorecheckButton.addEventListener("click", () => {
 		if (!tabs[0].id) return;
 		try {
 			scorecheckButton.innerHTML = '<div class="loader"></div>';
-			const data = await chrome.tabs.sendMessage(tabs[0].id, { message: "scorecheck" }).catch((e: string) => {
-				log.innerText = e;
-			});
+			const data = await chrome.tabs.sendMessage(tabs[0].id, { message: "scorecheck" });
+			if (chrome.runtime.lastError) {
+				console.error(chrome.runtime.lastError);
+				return;
+			}
 			console.log(JSON.stringify(data));
 			await navigator.clipboard.writeText(JSON.stringify(data));
 			log.innerText = "コピーしました";

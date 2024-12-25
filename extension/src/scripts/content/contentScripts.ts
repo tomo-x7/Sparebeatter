@@ -46,11 +46,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 			return true;
 		}
 		case "toppage":
-			return toppage().then(sendResponse);
+			toppage().then(sendResponse);
+			return true;
 		case "creators":
-			return creators().then(sendResponse);
+			creators().then(sendResponse);
+			return true;
 		case "scorecheck":
-			return scorecheck().then(sendResponse);
+			scorecheck().then((data) => sendResponse(data));
+			return true;
 		default:
 			break;
 	}
