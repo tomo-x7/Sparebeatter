@@ -1,6 +1,12 @@
 {
 	"name": "Sparebeat extensions",
 	"version": "2.1.0",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "sparebeat_extensions@tomo-x.bsky.social",
+			"strict_min_version": "109.0"
+		}
+	},
 	"manifest_version": 3,
 	"description": "Sparebeatの各種便利ツール（非公式）",
 	"permissions": ["tabs", "clipboardWrite"],
@@ -23,7 +29,7 @@
 		}
 	],
 	"background": {
-		"scripts":[ "scripts/backgroundScripts.js"]
+		"scripts": ["scripts/backgroundScripts.js"]
 	},
 	"action": {
 		"default_icon": "images/icon38.png",
