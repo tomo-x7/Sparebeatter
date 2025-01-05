@@ -30,7 +30,7 @@ export default function Home({ searchParams }: { searchParams: { [key: string]: 
 				made by <a href="/">sparebeat_extensions</a>
 				<br />
 				ダウンロードは
-				<a href="https://github.com/tomo-x7/Sparebeatter/releases" target="__blank" rel="noopener noreferrer">
+				<a href="/" target="__blank" rel="noopener noreferrer">
 					こちら
 				</a>
 				から
