@@ -1,12 +1,30 @@
+const listener = (ev: MouseEvent) => {
+	ev.preventDefault();
+};
+function setListener() {
+	document.getElementById("root")?.addEventListener("contextmenu", listener);
+}
+function removeListener() {
+	document.getElementById("root")?.removeEventListener("contextmenu", listener);
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	try {
-		if (request.message === "setkeyconfig") {
-			localStorage.setItem("keymap", request.keymap);
+		if (request.message === "preventContextMenu") {
+			if (request.enable) {
+				setListener();
+			} else {
+				removeListener();
+			}
 			sendResponse("成功！");
-		} else if (request.message === "getkeyconfig") {
-			sendResponse(localStorage.getItem("keymap") ?? { key1: 68, key2: 70, key3: 74, key4: 75, attack: 32 });
 		} else return false;
 	} catch (e) {
 		sendResponse(e);
 	}
 });
+
+(async () => {
+	if ((await chrome.storage.local.get("preventContextMenu")).preventContextMenu === "true") {
+		setListener();
+	}
+})();

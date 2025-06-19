@@ -1,6 +1,6 @@
 {
 	"name": "Sparebeat extensions",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"browser_specific_settings": {
 		"gecko": {
 			"id": "sparebeat_extensions@tomo-x.bsky.social",
@@ -9,7 +9,7 @@
 	},
 	"manifest_version": 3,
 	"description": "Sparebeatの各種便利ツール（非公式）",
-	"permissions": ["tabs", "clipboardWrite"],
+	"permissions": ["tabs", "clipboardWrite","storage"],
 	"icons": {
 		"128": "images/icon128.png",
 		"48": "images/icon48.png",
@@ -24,8 +24,12 @@
 		},
 		{
 			"matches": ["https://sparebeat.com/embed/"],
-			"js": ["scripts/editorScripts.js"],
+			"js": ["scripts/embedScripts.js"],
 			"all_frames": true
+		},
+		{
+			"matches": ["https://spbe.bo-yakitarako.dev/*"],
+			"js": ["scripts/editorScripts.js"]
 		}
 	],
 	"background": {

@@ -2,65 +2,92 @@
 <html style="height: fit-content;min-height: 300px;">
 
 <head>
-    <meta charset="utf-8">
-    <style>
-        #keylist {
-            margin: 10px;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
+	<meta charset="utf-8">
+	<style>
+		#keylist {
+			margin: 10px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
 
-        }
+		#keylist.hidden {
+			display: none;
+		}
 
-        .key {
-            cursor: default;
-            user-select: none;
-            outline: none;
-            border-color: black;
-            border-width: 1px;
-            border-style: solid;
-            appearance: auto;
-            line-height: 50px;
-            text-align: center;
-            width: 50px;
-            height: 50px;
-            background-color: white;
-        }
+		#log {
+			margin: 10px;
+			padding: 10px;
+			border: 1px solid black;
+			height: 100px;
+			overflow-y: auto;
+			font-family: monospace;
+		}
 
-        #attack {
-            width: 120px
-        }
+		h3 {
+			text-align: center;
+			margin-top: 0;
+		}
 
-        .select {
-            background-color: gray;
-        }
-    </style>
+		ul {
+			padding-left: 20px;
+		}
+
+		li {
+			margin-bottom: 5px;
+		}
+
+		.key {
+			cursor: default;
+			user-select: none;
+			outline: none;
+			border-color: black;
+			border-width: 1px;
+			border-style: solid;
+			appearance: auto;
+			line-height: 50px;
+			text-align: center;
+			width: 50px;
+			height: 50px;
+			background-color: white;
+		}
+
+		#attack {
+			width: 120px
+		}
+
+		.select {
+			background-color: gray;
+		}
+	</style>
 </head>
 
 <body style="width: 340px;">
-    <div>
-        <h3>使い方</h3>
-        <p><a href="https://spbe.bo-yakitarako.dev/" target="_blank" rel="noopener noreferrer">Map
-                Editor</a>でテストプレイを開いた状態でこの画面を開いて、キーコンフィグを設定してください。
-            <br><span style="color: red;font-size:1.2em;font-weight: bold;">テストプレイの画面を開かないと動作しません！</span>
-        </p>
-    </div>
-    <hr>
-    <div id="keylist">
-        <span style="display: flex;gap: 10px;">
-            <span type="button" id="key1" class="key" tabindex="-1">d</span>
-            <span type="button" id="key2" class="key" tabindex="-1">f</span>
-            <span type="button" id="key3" class="key" tabindex="-1">j</span>
-            <span type="button" id="key4" class="key" tabindex="-1">k</span>
-        </span>
-        <span type="button" id="attack" class="key" tabindex="-1">space</span>
-    </div>
-
-    <hr>
-    <div id="log" style="height: auto;"></div>
-    <script type="module" src="./editorpopup.js"></script>
+	<div>
+		<h3>使い方</h3>
+		<ul>
+			<li><a href="https://spbe.bo-yakitarako.dev/" target="_blank" rel="noopener noreferrer">Map
+					Editor</a>でテストプレイを開いた状態でこの画面を開いて、キーコンフィグを設定してください。
+			</li>
+			<li>エディター上で右クリックを無効化できます</li>
+		</ul>
+	</div>
+	<hr>
+	<div id="keylist" class="hidden">
+		<span style="display: flex;gap: 10px;">
+			<span type="button" id="key1" class="key" tabindex="-1">d</span>
+			<span type="button" id="key2" class="key" tabindex="-1">f</span>
+			<span type="button" id="key3" class="key" tabindex="-1">j</span>
+			<span type="button" id="key4" class="key" tabindex="-1">k</span>
+		</span>
+		<span type="button" id="attack" class="key" tabindex="-1">space</span>
+	</div>
+	<div id="config" style="display: none;"><label><input type="checkbox" id="preventContextMenu">右クリックを無効化する</label></div>
+	<hr>
+	<div id="log" style="height: auto;"></div>
+	<script type="module" src="./editorpopup.js"></script>
 </body>
 
 </html>
