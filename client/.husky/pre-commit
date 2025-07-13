@@ -1,3 +1,2 @@
 cd extension
-biome check --write
-git add .
+pnpm exec lint-staged
