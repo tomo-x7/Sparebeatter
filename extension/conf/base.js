@@ -1,7 +1,5 @@
-//@ts-check
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-import path from "path";
 import CopyWebpackPlugin from "copy-webpack-plugin";
+import path from "path";
 export const baseDir = path.join(import.meta.dirname, "..");
 /**
  * @param {boolean} prod

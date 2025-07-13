@@ -1,9 +1,6 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-	"files": {
-		"ignore": ["**/node_modules/**", "dist/**"],
-		"include": ["*.*"]
-	},
+	"$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
+	"vcs": { "clientKind": "git", "enabled": true, "useIgnoreFile": true },
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -14,8 +11,18 @@
 	"linter": {
 		"rules": {
 			"a11y": { "useKeyWithClickEvents": "off" },
-			"style": { "noUselessElse": "off", "useImportType": "info", "noNonNullAssertion": "off" },
-			"correctness": { "noUnusedImports": "info", "useJsxKeyInIterable": "off" }
+			"style": {
+				"noUselessElse": "off",
+				"useImportType": "info",
+				"noNonNullAssertion": "off",
+				"useNodejsImportProtocol": "off"
+			},
+			"correctness": {
+				"noUnusedImports": { "level": "info", "fix": "safe", "options": {} },
+				"useJsxKeyInIterable": "off",
+				"noUnusedFunctionParameters": "off",
+				"noUnusedVariables": "off"
+			}
 		}
 	}
 }

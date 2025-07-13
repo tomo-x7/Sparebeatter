@@ -3,7 +3,7 @@
 }
 
 .sparebeat_extensions_rate {
-	margin-right: .8rem;
+	margin-right: 0.8rem;
 	cursor: pointer;
 }
 
@@ -14,7 +14,9 @@
 	position: fixed;
 	inset: 0;
 	background-color: #0006;
-	transition: opacity .5s, visibility .5s;
+	transition:
+		opacity 0.5s,
+		visibility 0.5s;
 	opacity: 0;
 	visibility: hidden;
 	z-index: 10;
@@ -32,7 +34,7 @@
 }
 
 div.sparebeat_extensions_rate_button {
-	margin-top: .5rem;
+	margin-top: 0.5rem;
 	text-align: center;
 	& button {
 		color: #3282fb;
@@ -44,12 +46,15 @@ div.sparebeat_extensions_rate_button {
 		user-select: none;
 		background-color: transparent;
 		border: 1px solid #3282fb;
-		padding: .375rem .75rem;
+		padding: 0.375rem 0.75rem;
 		font-size: 1rem;
 		line-height: 1.5;
-		border-radius: .25rem;
-		transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow
-			.15s ease-in-out;
+		border-radius: 0.25rem;
+		transition:
+			color 0.15s ease-in-out,
+			background-color 0.15s ease-in-out,
+			border-color 0.15s ease-in-out,
+			box-shadow 0.15s ease-in-out;
 		&:hover {
 			color: #fff;
 			background-color: #3282fb;

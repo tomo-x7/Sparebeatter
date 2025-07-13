@@ -2,7 +2,7 @@ const log = document.getElementById("log")!;
 const keylist = document.getElementById("keylist")!;
 const keymap = { key1: 68, key2: 70, key3: 74, key4: 75, attack: 32 };
 const keybuttonlist = Array.from(document.getElementsByClassName("key")) as HTMLSpanElement[];
-let waitingkey: HTMLSpanElement | undefined = undefined;
+let waitingkey: HTMLSpanElement | undefined;
 
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 	if (!tabs[0].id) return;

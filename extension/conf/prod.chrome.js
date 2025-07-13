@@ -1,11 +1,11 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-import path from "path";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 import HtmlMinimizerPlugin from "html-minimizer-webpack-plugin";
 import JsonMinimizerPlugin from "json-minimizer-webpack-plugin";
+import path from "path";
 import TerserPlugin from "terser-webpack-plugin";
 import { merge } from "webpack-merge";
 import { baseDir, config } from "./base.js";
+
 /** @type import('webpack').Configuration */
 const prodConfig = {
 	mode: "production",

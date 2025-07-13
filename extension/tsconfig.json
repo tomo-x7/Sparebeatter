@@ -19,6 +19,6 @@
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js"
 	},
-	"include": ["src", "conf"],
+	"include": ["src", "conf", "build.js"],
 	"exclude": ["node_modules", "dist"]
 }
