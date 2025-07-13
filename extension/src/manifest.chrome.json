@@ -1,6 +1,6 @@
 {
 	"name": "Sparebeat extensions",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"manifest_version": 3,
 	"description": "Sparebeatの各種便利ツール（非公式）",
 	"permissions": ["tabs", "clipboardWrite","storage"],
