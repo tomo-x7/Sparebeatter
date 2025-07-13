@@ -1,5 +1,6 @@
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import path from "path";
+import { readFileSync } from "fs";
+import path, { join } from "path";
 export const baseDir = path.join(import.meta.dirname, "..");
 /**
  * @param {boolean} prod
@@ -8,6 +9,10 @@ export const baseDir = path.join(import.meta.dirname, "..");
  */
 export const config = (prod, target) => {
 	const outputPath = path.join(baseDir, `dist-${target}-${prod ? "prod" : "dev"}`);
+	const rawPackageJson = readFileSync(join(process.cwd(), "package.json"), "utf8");
+	if (rawPackageJson == null) throw new Error("package.json not found");
+	const currentVersion = JSON.parse(rawPackageJson).version;
+	if (currentVersion == null) throw new Error("invalid package.json");
 	return {
 		mode: "development",
 		devtool: "inline-source-map",
@@ -39,6 +44,9 @@ export const config = (prod, target) => {
 					{
 						from: path.join(baseDir, "src", `manifest.${target}.json`),
 						to: path.join(outputPath, "manifest.json"),
+						transform: (input) => {
+							return input.toString().replaceAll("{{version}}", currentVersion);
+						},
 					},
 					{
 						from: path.join(baseDir, "src", "scripts", "action"),
