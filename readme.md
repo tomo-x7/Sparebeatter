@@ -1,18 +1,21 @@
-<!-- # Sparebeatter V3.1
-## 対応ブラウザ
-Chromeでしか動作確認していません。
-## インストール方法
-1. zipファイルを展開します。  
-1. Chromeの拡張機能のページ(chrome://extensions/)にアクセスします。
-1. 右上のデベロッパーモードをオンにします。
-1. 「パッケージ化されていない拡張機能を読み込む」を押します。
-1. zipを展開したフォルダ(Sparebeatter Vx.x.xみたいなフォルダ)を選択してOKします。
-### リザルト共有
-1. Sparebeatのリザルト画面で右上の拡張機能のところからSparebeatterを押してどれかのボタンを押します。
-1. Twitter、Bluesky[^1]、Facebookの場合はお好みで文章を編集して投稿！  
-[^1]: 編集する必要がない場合でも必ずスペースを入力→削除などして「リンクカードを追加」ボタンを押してください
-### エディターキーコンフィグ
-1. MapEditorでテストプレイを開いた状態で右上の拡張機能のところからSparebeatterを開いて、キーコンフィグを設定できます
-## エラーが起きた場合
-まずはChromeの拡張機能のページ(chrome://extensions/)にアクセスして、Sparebeatterを再読み込みしてみてください。  
-それでも解決しない場合は[Twitter](https://twitter.com/tomo_x_79)、[Github](https://github.com/tomo-x7/Sparebeatter)、またはDiscordの非公式Sparebeat交流鯖まで -->
+# Sparebeat_extensions
+
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/fjlmjjmfiiafghpnpegalcdfnclepakp?style=for-the-badge&logo=googlechrome&logoColor=white&label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/sparebeat-extensions/fjlmjjmfiiafghpnpegalcdfnclepakp?hl=ja)
+[![Firefox Add-ons](https://img.shields.io/amo/v/sparebeat-extensions?style=for-the-badge&logo=firefox&logoColor=white&label=Firefox%20Add-ons)](https://addons.mozilla.org/ja/firefox/addon/sparebeat-extensions/)
+
+# For Reviewers
+## How to Build
+1. Move to the directory:
+    ```shell
+    cd extension
+    ```
+1. Install dependencies:
+    ```shell
+    pnpm i --frozen-lockfile
+    ```
+1. Build for release:
+    ```shell
+    pnpm run release
+    ```
+1. Select `rebuild`
+1. The zip file will be generated in `extension/release-x.x.x@mmdd/`
