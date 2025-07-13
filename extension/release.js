@@ -1,8 +1,9 @@
 import { isCancel, select } from "@clack/prompts";
 import { execSync } from "child_process";
-import { mkdirSync, readFileSync, rmSync } from "fs";
+import { createWriteStream, mkdirSync, readFileSync, rmSync } from "fs";
 import { join } from "path";
 import { exit } from "process";
+import { Writable } from "stream";
 import { zip } from "zip-a-folder";
 
 const date = new Date()
@@ -61,6 +62,38 @@ try {
 	);
 } catch (e) {
 	console.error("Error during zipping process:", e);
+	exit(1);
+}
+// ソースコード取得前にもし差分があればcommit&pushを実行(暫定機能)
+try {
+	const gitStatus = execSync("git status --porcelain", { encoding: "utf8" }).trim();
+	if (gitStatus) {
+		console.log("Uncommitted changes detected. Committing and pushing...");
+		execSync("git add .", { stdio: "inherit" });
+		execSync('git commit -m "auto: release commit"', { stdio: "inherit" });
+		execSync("git push", { stdio: "inherit" });
+	} else {
+		console.log("No uncommitted changes.");
+	}
+} catch (e) {
+	console.error("Error during git commit/push:", e);
+	exit(1);
+}
+// GitHubからソースコードのzipを取得(暫定機能)
+// 将来的にはextensionフォルダとhowtobuild.mdをまとめてzip化したい
+try {
+	const githubZipUrl = `https://github.com/tomo-x7/sparebeat_extensions/archive/refs/heads/main.zip`;
+	const destPath = join(import.meta.dirname, releaseDir, `source-main.zip`);
+	const res = await fetch(githubZipUrl);
+	await new Promise((resolve, reject) => {
+		const stream = createWriteStream(destPath);
+		const webStream = Writable.toWeb(stream);
+		res.body?.pipeTo(webStream);
+		stream.on("error", reject);
+		stream.on("finish", resolve);
+	});
+} catch (e) {
+	console.error("Error downloading source zip from GitHub:", e);
 	exit(1);
 }
 

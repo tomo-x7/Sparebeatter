@@ -37,7 +37,8 @@
 		"chrome:prod": "webpack --stats-error-details --config conf/prod.chrome.js",
 		"firefox:dev": "webpack --stats-error-details --config conf/dev.firefox.js",
 		"firefox:prod": "webpack --stats-error-details --config conf/prod.firefox.js",
-		"prepare": "cd .. && husky client/.husky"
+		"prepare": "cd .. && husky client/.husky",
+		"release": "node release.js"
 	},
 	"lint-staged": {
 		"**/*": [
