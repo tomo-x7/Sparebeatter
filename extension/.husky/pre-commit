@@ -1,0 +1,2 @@
+cd extension
+biome check --write
