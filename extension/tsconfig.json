@@ -4,12 +4,12 @@
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"useDefineForClassFields": true,
 		"module": "ESNext",
-		"rootDir": "./src",
+		"rootDir": "./",
 		"moduleResolution": "bundler",
 		"baseUrl": "src",
 		"resolveJsonModule": true,
 		"allowJs": true,
-		"checkJs": false,
+		"checkJs": true,
 		"removeComments": true,
 		"esModuleInterop": true,
 		"strict": true,
@@ -19,6 +19,6 @@
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js"
 	},
-	"include": ["src"],
+	"include": ["src", "conf"],
 	"exclude": ["node_modules", "dist"]
 }

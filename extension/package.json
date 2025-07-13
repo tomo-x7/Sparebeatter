@@ -3,6 +3,7 @@
 	"version": "2.2.1",
 	"main": "",
 	"license": "MIT",
+	"private": true,
 	"devDependencies": {
 		"@babel/core": "^7.25.9",
 		"@babel/preset-env": "^7.24.8",
@@ -23,12 +24,13 @@
 		"webpack-merge": "^6.0.1"
 	},
 	"scripts": {
-		"chrome": "webpack --stats-error-details",
-		"chrome:prod": "webpack --stats-error-details --config prod.webpack.config.babel.js",
-		"firefox": "webpack --stats-error-details --config firefox.webpack.config.babel.js",
-		"firefox:prod": "webpack --stats-error-details --config prod.firefox.webpack.config.babel.js"
+		"chrome:dev": "webpack --stats-error-details --config conf/dev.chrome.js",
+		"chrome:prod": "webpack --stats-error-details --config conf/prod.chrome.js",
+		"firefox:dev": "webpack --stats-error-details --config conf/dev.firefox.js",
+		"firefox:prod": "webpack --stats-error-details --config conf/prod.firefox.js"
 	},
 	"dependencies": {
 		"solid-js": "^1.9.3"
-	}
+	},
+	"type": "module"
 }

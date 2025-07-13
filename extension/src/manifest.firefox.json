@@ -9,7 +9,7 @@
 	},
 	"manifest_version": 3,
 	"description": "Sparebeatの各種便利ツール（非公式）",
-	"permissions": ["tabs", "clipboardWrite","storage"],
+	"permissions": ["tabs", "clipboardWrite", "storage"],
 	"icons": {
 		"128": "images/icon128.png",
 		"48": "images/icon48.png",

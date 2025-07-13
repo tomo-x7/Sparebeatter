@@ -9,7 +9,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 	chrome.tabs
 		.sendMessage(tabs[0].id, { message: "getkeyconfig" })
 		.then(async (res) => {
-			if(res==null){
+			if (res == null) {
 				keylist.classList.add("hidden");
 				return;
 			}
@@ -76,7 +76,7 @@ addEventListener("keydown", (event) => {
 });
 
 (async () => {
-	console.log("hoge")
+	console.log("hoge");
 	if ((await chrome.storage.local.get("preventContextMenu")).preventContextMenu === "true") {
 		(document.getElementById("preventContextMenu") as HTMLInputElement).checked = true;
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

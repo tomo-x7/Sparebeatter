@@ -1,0 +1,1 @@
+chrome.runtime.onMessage.addListener((function(e,t,a){try{if("setkeyconfig"===e.message)localStorage.setItem("keymap",e.keymap),a("成功！");else{if("getkeyconfig"!==e.message)return!1;var s;a(null!==(s=localStorage.getItem("keymap"))&&void 0!==s?s:JSON.stringify({key1:68,key2:70,key3:74,key4:75,attack:32}))}}catch(e){a(e)}}));

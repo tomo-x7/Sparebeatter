@@ -1,6 +1,6 @@
+import { render } from "solid-js/web";
 import { check } from "./contentScripts";
 import type { apires } from "./type";
-import { render } from "solid-js/web";
 
 const keys: { 1: "levelEasy"; 2: "levelNormal"; 3: "levelHard" } = { 1: "levelEasy", 2: "levelNormal", 3: "levelHard" };
 type rates = ({ rate: number; id: string; difficulty: 1 | 2 | 3; title: string } | { rate: number; id?: undefined })[];
