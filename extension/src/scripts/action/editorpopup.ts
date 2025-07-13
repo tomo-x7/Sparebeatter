@@ -100,6 +100,4 @@ document.getElementById("preventContextMenu")!.addEventListener("click", async (
 		});
 	});
 });
-console.log("aaa")
-log.innerText="hoge"
 export {};
